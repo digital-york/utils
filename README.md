@@ -1,4 +1,5 @@
-1. checkaudiocustomlabel 
+1. checkaudiocustomlabel
+
    DESC: Check if the sounditem object track title has been incorrectly put in the RELS-INT and if it is, move it to dc:title
 
    rename pids.properties.DEMO to pids.properties and update PIDs list
