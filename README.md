@@ -1,6 +1,8 @@
 1. checkaudiocustomlabel
 
    DESC: Check if the sounditem object track title has been incorrectly put in the RELS-INT and if it is, move it to dc:title
+   
+   NB: This scripts is tested against Ruby 2.2 / Fedora 3.8
 
    rename pids.properties.DEMO to pids.properties and update PIDs list
 

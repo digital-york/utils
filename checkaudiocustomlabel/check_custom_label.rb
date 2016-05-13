@@ -53,7 +53,6 @@ class CheckCustomLabel
         if label.text != 'WAV' and label.text != 'AUDIO_MEDIUM' and label.text != 'AUDIO_LOW'
           unique_labels << label.text
         end
-
       end
 
       dctitles = dc_doc.xpath('/oaidc:dc/dc:title', @namespaces)
@@ -70,6 +69,8 @@ class CheckCustomLabel
         dc_doc.root << new_dc_title
         dc_modified = true
       end
+
+      # if dc:title is modified (new dc:titles added), then remove the default one created by workflow
       if dc_modified == true
         dc_doc.search("//dc:title[.='Fedora object created by workflow.']").remove
         puts '  updating DC ...'
@@ -80,6 +81,7 @@ class CheckCustomLabel
       #puts dc_doc.to_s
 
       relsint_modified = false
+      # restore hasDatastreamLabels to the default (fixed) one as it will be used for access control
       if wavDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[@rdfs:about=\'info:fedora/'+pid+'/WAV\']/relint:hasDatastreamLabel', @namespaces)
         wavDS.content    = 'WAV'
         relsint_modified = true
@@ -99,11 +101,7 @@ class CheckCustomLabel
       else
         puts '  no need to update RELS-INT ...'
       end
-
     end
-
-
-
   end
 end
 
