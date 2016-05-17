@@ -12,5 +12,13 @@
 
    To run: ruby check_custom_labe.rb
 
+2. irisdump
+
+   DESC: get iris data dump from solr / fedora for further processing in R package, as required by project partners
+   
+   Do similar thing for pids.properties and system.yaml as described in 1)
+ 
+   To run: ruby iris_dump.rb
+
 
 
