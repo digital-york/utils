@@ -88,19 +88,19 @@ class CheckCustomLabel
       relsint_modified = false
       # restore hasDatastreamLabels to the default (fixed) one as it will be used for access control
       if wavDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/WAV\')]/relint:hasDatastreamLabel[.!=\'WAV\']', @namespaces)
-        wavDS.content    = 'WAV'
+        wavDS.content    = 'WAV'   # changed back to controlled value as it is needed in access control
         relsint_modified = true
       end
       if originDs=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/ORIGINAL_AUDIO\')]/relint:hasDatastreamLabel[.!=\'ORIGINAL_AUDIO\']', @namespaces)
-        wavDS.content    = 'ORIGINAL_AUDIO'
+        wavDS.content    = 'ORIGINAL_AUDIO'  # changed back to controlled value as it is needed in access control
         relsint_modified = true
       end
       if audioMediumDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_MEDIUM\')]/relint:hasDatastreamLabel[.!=\'AUDIO_MEDIUM\']', @namespaces)
-        audioMediumDS.content = 'AUDIO_MEDIUM'
+        audioMediumDS.content = 'AUDIO_MEDIUM'  # changed back to controlled value as it is needed in access control
         relsint_modified = true
       end
       if audioLowDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_LOW\')]/relint:hasDatastreamLabel[.!=\'AUDIO_LOW\']', @namespaces)
-        audioLowDS.content = 'AUDIO_LOW'
+        audioLowDS.content = 'AUDIO_LOW'   # changed back to controlled value as it is needed in access control
         relsint_modified = true
       end
 
