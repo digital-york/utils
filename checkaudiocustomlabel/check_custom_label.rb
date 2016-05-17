@@ -47,10 +47,15 @@ class CheckCustomLabel
       relsint_doc = Nokogiri::XML(relsint.body.to_s)
       dc_doc      = Nokogiri::XML(dc.body.to_s)
 
-      labels = relsint_doc.xpath('/rdfs:RDF/rdfs:Description[contains(@rdfs:about,\'WAV\') or contains(@rdfs:about,\'AUDIO_MEDIUM\') or contains(@rdfs:about,\'AUDIO_LOW\')]/relint:hasDatastreamLabel', @namespaces)
+      labels = relsint_doc.xpath('/rdfs:RDF/rdfs:Description[contains(@rdfs:about,\'ORIGINAL_AUDIO\') or contains(@rdfs:about,\'WAV\') or contains(@rdfs:about,\'AUDIO_MEDIUM\') or contains(@rdfs:about,\'AUDIO_LOW\')]/relint:hasDatastreamLabel', @namespaces)
       for label in labels
         # Check to ignore system DS Labels
-        if label.text != 'WAV' and label.text != 'AUDIO_MEDIUM' and label.text != 'AUDIO_LOW'
+        if
+            (not label.text.start_with? 'WAV') and
+            (not label.text.start_with? 'ORIGINAL_AUDIO') and
+            (not label.text.start_with? 'AUDIO_MEDIUM') and
+            (not label.text.start_with? 'AUDIO_LOW') and
+            (not unique_labels.include? label.text)
           unique_labels << label.text
         end
       end
@@ -82,15 +87,19 @@ class CheckCustomLabel
 
       relsint_modified = false
       # restore hasDatastreamLabels to the default (fixed) one as it will be used for access control
-      if wavDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[@rdfs:about=\'info:fedora/'+pid+'/WAV\']/relint:hasDatastreamLabel[.!=\'WAV\']', @namespaces)
+      if wavDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/WAV\')]/relint:hasDatastreamLabel[.!=\'WAV\']', @namespaces)
         wavDS.content    = 'WAV'
         relsint_modified = true
       end
-      if audioMediumDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[@rdfs:about=\'info:fedora/'+pid+'/AUDIO_MEDIUM\']/relint:hasDatastreamLabel[.!=\'AUDIO_MEDIUM\']', @namespaces)
+      if originDs=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/ORIGINAL_AUDIO\')]/relint:hasDatastreamLabel[.!=\'ORIGINAL_AUDIO\']', @namespaces)
+        wavDS.content    = 'ORIGINAL_AUDIO'
+        relsint_modified = true
+      end
+      if audioMediumDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_MEDIUM\')]/relint:hasDatastreamLabel[.!=\'AUDIO_MEDIUM\']', @namespaces)
         audioMediumDS.content = 'AUDIO_MEDIUM'
         relsint_modified = true
       end
-      if audioLowDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[@rdfs:about=\'info:fedora/'+pid+'/AUDIO_LOW\']/relint:hasDatastreamLabel[.!=\'AUDIO_LOW\']', @namespaces)
+      if audioLowDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_LOW\')]/relint:hasDatastreamLabel[.!=\'AUDIO_LOW\']', @namespaces)
         audioLowDS.content = 'AUDIO_LOW'
         relsint_modified = true
       end
