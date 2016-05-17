@@ -87,21 +87,34 @@ class CheckCustomLabel
 
       relsint_modified = false
       # restore hasDatastreamLabels to the default (fixed) one as it will be used for access control
-      if wavDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/WAV\')]/relint:hasDatastreamLabel[.!=\'WAV\']', @namespaces)
-        wavDS.content    = 'WAV'   # changed back to controlled value as it is needed in access control
-        relsint_modified = true
+      wavDSs = relsint_doc.xpath('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/WAV\')]/relint:hasDatastreamLabel[.!=\'WAV\']', @namespaces)
+      if not wavDSs.nil?
+        wavDSs.each do |node|
+          node.content    = 'WAV'   # changed back to controlled value as it is needed in access control
+          relsint_modified = true
+        end
       end
-      if originDs=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/ORIGINAL_AUDIO\')]/relint:hasDatastreamLabel[.!=\'ORIGINAL_AUDIO\']', @namespaces)
-        wavDS.content    = 'ORIGINAL_AUDIO'  # changed back to controlled value as it is needed in access control
-        relsint_modified = true
+      originDSs=relsint_doc.xpath('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/ORIGINAL_AUDIO\')]/relint:hasDatastreamLabel[.!=\'ORIGINAL_AUDIO\']', @namespaces)
+      if not originDSs.nil?
+        originDSs.each do |node|
+          node.content    = 'ORIGINAL_AUDIO'  # changed back to controlled value as it is needed in access control
+          relsint_modified = true
+        end
       end
-      if audioMediumDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_MEDIUM\')]/relint:hasDatastreamLabel[.!=\'AUDIO_MEDIUM\']', @namespaces)
-        audioMediumDS.content = 'AUDIO_MEDIUM'  # changed back to controlled value as it is needed in access control
-        relsint_modified = true
+      audioMediumDSs=relsint_doc.xpath('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_MEDIUM\')]/relint:hasDatastreamLabel[.!=\'AUDIO_MEDIUM\']', @namespaces)
+      if not audioMediumDSs.nil?
+        audioMediumDSs.each do |node|
+          node.content = 'AUDIO_MEDIUM'  # changed back to controlled value as it is needed in access control
+          relsint_modified = true
+        end
       end
-      if audioLowDS=relsint_doc.at('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_LOW\')]/relint:hasDatastreamLabel[.!=\'AUDIO_LOW\']', @namespaces)
-        audioLowDS.content = 'AUDIO_LOW'   # changed back to controlled value as it is needed in access control
-        relsint_modified = true
+
+      audioLowDSs=relsint_doc.xpath('/rdfs:RDF/rdfs:Description[starts-with(@rdfs:about,\'info:fedora/'+pid+'/AUDIO_LOW\')]/relint:hasDatastreamLabel[.!=\'AUDIO_LOW\']', @namespaces)
+      if not audioLowDSs.nil?
+        audioLowDSs.each do |node|
+          node.content = 'AUDIO_LOW'   # changed back to controlled value as it is needed in access control
+          relsint_modified = true
+        end
       end
 
       if relsint_modified == true
