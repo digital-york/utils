@@ -17,7 +17,10 @@ class IrisDump
     @host     = @props['host']
     @admin    = @props['admin']
     @password = @props['password']
+    @dumppath = @props['dumppath']
     @dumpfile = @props['dumpfile']
+
+    @generatedfiles = Array.new
 
     puts 'loading pid list ...'
     @pids = []
@@ -37,22 +40,17 @@ class IrisDump
       c.use Faraday::Adapter::NetHttp
     end
     conn.basic_auth(@admin, @password)
-    dumpdoc = Nokogiri::XML('<irisdump></irisdump>', nil, 'UTF-8')
-    dumproot = dumpdoc.root
-    puts '==============='
-    #puts dumpdoc.to_xml
 
     total = @pids.length
-
     i = 1
     for pid in @pids
       puts 'Processing ' + pid + '['+i.to_s + ' / ' + total.to_s+']' +' ...'
       pidforsolr = pid.dup
       pidforsolr.sub! ':', '?'
-      record = Nokogiri::XML::Node.new('record',dumpdoc)
-      # add pid properties
-      record['pid'] = pid
-      dumproot << record
+      pidforfile = pid.dup
+      pidforfile.sub! ':', '_'
+      record = Nokogiri::XML('<record pid=\''+pid+'\'/>', nil, 'UTF-8')
+      recordRoot = record.root
 
       puts '    Getting solr dump for ' + pid + ' ...'
       solrresponse = conn.get '/solr/select/?q=PID:'+ pidforsolr
@@ -60,14 +58,14 @@ class IrisDump
 
       if not solrresponse.nil?
         # add solr xml response
-        solrnode = Nokogiri::XML::Node.new('solr',dumpdoc)
-        record << solrnode
+        solrnode = Nokogiri::XML::Node.new('solr',record)
+        recordRoot << solrnode
         solrnode.add_child(solrresponsedoc)
 
         # add associated files
         puts '    getting uploaded files ...'
-        filesnode = Nokogiri::XML::Node.new('files',dumpdoc)
-        record << filesnode
+        filesnode = Nokogiri::XML::Node.new('files',record)
+        recordRoot << filesnode
 
         datastreamsresp = conn.get '/fedora/objects/'+pid+'/datastreams?format=xml'
         datastreamsdoc  = Nokogiri::XML(datastreamsresp.body.to_s)
@@ -83,7 +81,7 @@ class IrisDump
             if not dslocation_elts.nil?
               for dslocation_elt in dslocation_elts
                 dslocation = dslocation_elt.text
-                filenode = Nokogiri::XML::Node.new('file',dumpdoc)
+                filenode = Nokogiri::XML::Node.new('file',record)
                 filenode['id'] = dsid
                 filenode['mime'] = dsmime
                 filenode['url']  = dslocation
@@ -94,31 +92,35 @@ class IrisDump
         else
           puts "    Cannot find any uploaded file for " + pid
         end
-
-        i = i+1
-        if i>2
-          break
-        end
-        #break
+      else
+        puts 'Error: cannot dump solr data!'
       end
-#        solr_doc = Nokogiri::XML(solrresponse.body.to_s)
+      record.search("//arr[starts-with(@name,'iris.downloaders') or starts-with(@name,'iris2.downloaders')]").remove
+      record.search("//arr[starts-with(@name,'vra.') or starts-with(@name,'vra2.')]").remove
+      record.search("//arr[starts-with(@name,'acl.') or starts-with(@name,'acl2.')]").remove
+      record.search("//arr[starts-with(@name,'rdf.') or starts-with(@name,'rdf2.')]").remove
+
+      puts '    Saving to file ' + @dumppath + pidforfile + '.xml'
+      File.write(@dumppath + pidforfile + '.xml', record.human)
+      @generatedfiles << (pidforfile + '.xml')
+      i = i+1
+      if i%50 == 0
+        puts 'Sleeping for 5s ...'
+        sleep(5)
+      end
     end
 
-    # removing all iris.downloaders.* and iris2.downloaders.* information
-    dumpdoc.search("//arr[starts-with(@name,'iris.downloaders') or starts-with(@name,'iris2.downloaders')]").remove
-    dumpdoc.search("//arr[starts-with(@name,'vra.') or starts-with(@name,'vra2.')]").remove
-    dumpdoc.search("//arr[starts-with(@name,'acl.') or starts-with(@name,'acl2.')]").remove
-    dumpdoc.search("//arr[starts-with(@name,'rdf.') or starts-with(@name,'rdf2.')]").remove
-
-    puts 'Saving to file ' + @dumpfile
-    File.write(@dumpfile, dumpdoc.human)
-
-    zipfilename = @dumpfile + '.zip'
+    puts 'Creating zip file ...'
+    zipfilename = @dumpfile
+    if File.exist? zipfilename
+      File.delete(zipfilename)
+    end
     Zip::File.open(zipfilename, Zip::File::CREATE) do |zipfile|
-      zipfile.add('solrdump.xml', @dumpfile)
+      for f in @generatedfiles
+        zipfile.add(f, @dumppath + f)
+      end
     end
 
-    #puts dumpdoc.human
   end
 end
 
