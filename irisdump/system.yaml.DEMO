@@ -2,3 +2,5 @@ protocol=https
 host=HOST
 admin=ADMIN_USER_NAME
 password=ADMIN_PASSWORD
+dumppath=/var/tmp/irisdump/
+dumpfile=/var/tmp/irisdump.zip
