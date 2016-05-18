@@ -17,6 +17,8 @@
    DESC: get iris data dump from solr / fedora for further processing in R package, as required by project partners
    
    Do similar thing for pids.properties and system.yaml as described in 1)
+
+   Make sure faraday, nokogiri, and rubyzip are installed before running the script
  
    To run: ruby iris_dump.rb
 
