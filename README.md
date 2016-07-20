@@ -22,5 +22,20 @@
  
    To run: ruby iris_dump.rb
 
+3. checkapprovedinstypes
+  
+   DESC: check if there are any IRIS objects that
+   
+   * has new instrument type being approved but
+   
+   * the primary instrument type attribute has not been updated
 
+   It requires the gem: colorize, so needs to run:
+
+   gem install colorize
+
+   To run: ruby check_approved_instype.rb
+
+
+   
 

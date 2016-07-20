@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IRIS_Data_Dict> 
+  <instrument> 
+    <typeOfInstruments name="Type Of Instrument" vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType"> 
+      <!-- Task  -->  
+      <!-- Comprehension Tests -->  
+      <!-- Grammar Tests -->  
+      <!-- Pictures -->  
+      <!-- Questionnaires -->  
+      <!-- Scripts -->  
+      <!-- Stimuli -->  
+      <!-- Vocabulary Tests  -->  
+      <!-- Working Memory Tests -->  
+      <!-- <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="072" label="Goal and self-assessment tools" def="Goal and self-assessment tools"/> -->  
+      <!-- <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="074" label="Metalinguistic knowledge (MLK) test" def="Metalinguistic knowledge (MLK) test"/> -->  
+      <!-- <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="073" label="Semi match guise test" def="Semi match guise test"/> -->  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="057" label="Clicker" def="Clicker"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="097" label="Coding scheme" def="Coding scheme"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="098" label="Formulaic language" def="Formulaic language"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="099" label="Other coding scheme" def="Other coding scheme"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="010" label="Communicative / Interactive task" def="Communicative / Interactive task"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="106" label="Decision-making / Argumentative task" def="Decision-making / Argumentative task"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="054" label="Information exchange" def="Information exchange tasks"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="053" label="Information gap" def="Information gap tasks (e.g. spot difference, map task)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="109" label="Role play" def="Role play"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="033" label="Other communicative / interactive task" def="Other communicative / interactive task"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="050" label="Comprehension test" def="Comprehension test"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="044" label="Listening" def="Listening comprehension test"> 
+          <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="086" label="Act-out task" def="Act-out task"/>  
+          <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="087" label="Other comprehension test" def="Other comprehension test"/> 
+        </type>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="043" label="Reading" def="Reading comprehension test"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="001" label="Computer game" def="Computer game (requiring learners to respond to stimuli)"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="060" label="Dictogloss task" def="Dictogloss task"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="002" label="Discourse completion task" def="Discourse completion task"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="003" label="Elicited imitation protocol / Sentence repetition task" def="Elicited imitation protocol / Sentence repetition task" alternate="Elicited imitation"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="004" label="Gap-fill / Cloze test / Fill in the blank" def="Gap-fill / Cloze test / Fill in the blank" alternate="Fill in the blank, Cloze,Gap fill"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="026" label="Goal and self-assessment tools" def="Goal and self-assessment tools"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="005" label="Grammar test / Morphosyntax test" def="Grammar test / Morphosyntax test" alternate="Morphosyntax test,Morphology test,Syntax test"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="006" label="Productive" def="Productive grammar test"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="007" label="Receptive" def="Receptive grammar test"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="008" label="Grammaticality / Acceptability judgement test" def="Grammaticality / Acceptability judgement test" alternate="Grammaticality judgement sentences,Grammaticality judgement test,Acceptability judgement test,GJT"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="036" label="Instructional / Intervention / Teaching / Training materials" def="Instructional / Intervention / Teaching / Training materials" alternate="Intervention materials,Experimental teaching,Experimental tasks,Training tasks,Intervention tasks"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="079" label="Interaction protocol" def="Interaction protocol"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="059" label="Interview protocol / schedule" def="Interview protocol / schedule" alternate="Interview schedule"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="055" label="Introspective technique / Think-aloud protocol / Self-report" def="Introspective technique / Think-aloud protocol / Self-report" alternate="Think aloud protocol,Self-report"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="102" label="Concurrent think-aloud" def="Concurrent think-aloud"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="103" label="Retrospective think-aloud" def="Retrospective think-aloud"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="104" label="Other introspective technique / think-aloud protocol / self-report " def="Other introspective technique / think-aloud protocol / self-report "/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="105" label="Lexical decision task" def="Lexical decision task"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="046" label="Listening / Aural test" def="Listening / Aural test" alternate="Aural test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="073" label="Meta-analysis assessment" def="Meta-analysis assessment"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="049" label="Metalinguistic knowledge (MLK) test" def="Metalinguistic knowledge (MLK) test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="108" label="Non-word repetition test" def="Non-word repetition test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="011" label="Observation protocol / schedule" def="Observation protocol / schedule" alternate="Observation schedule,Observation protocol"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="077" label="Picture matching test" def="Picture matching test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="074" label="Picture pointing task" def="Picture pointing task"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="096" label="Proficiency test" def="Proficiency test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="017" label="Questionnaire" def="Questionnaire"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="061" label="Attitude questionnaire" def="Attitude questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="063" label="Biographical questionnaire" def="Biographical questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="064" label="Debriefing questionnaire" def="Debriefing questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="085" label="Ethnic/social/cultural identity questionnaire" def="Ethnic/social/cultural identity questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="062" label="Language awareness questionnaire" def="Language awareness questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="065" label="Language background questionnaire" def="Language background questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="066" label="Language preferences or dominance questionnaire" def="Language preferences or dominance questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="067" label="Learning strategy questionnaire" def="Learning strategy questionnaire" alternate="Learner strategy questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="068" label="Learning style questionnaire" def="Learning style questionnaire" alternate="Learner style questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="069" label="Proficiency questionnaire" def="Proficiency questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="070" label="Self-efficacy questionnaire" def="Self-efficacy questionnaire"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="071" label="Other questionnaire" def="Questionnaire"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="045" label="Reading test" def="Reading test"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="100" label="Reading aloud / Word naming test" def="Reading aloud / Word naming test"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="101" label="Other reading test" def="Other reading test"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="025" label="Script for psycholinguistic techniques" def="Script for psycholinguistic techniques"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="051" label="ERP paradigm" def="Script for psycholinguistic techniques (ERP paradigm)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="027" label="Eye tracking" def="Script for psycholinguistic techniques (eye tracking)"> 
+          <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="009" label="Reading" def="Script for psycholinguistic techniques (eye tracking - reading)"/>  
+          <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="028" label="Visual world" def="Script for psycholinguistic techniques (eye tracking - visual world)"/>  
+          <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="009_1" label="Other eye tracking" def="Script for psycholinguistic techniques (eye tracking)"/> 
+        </type>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="052" label="fMRI paradigm" def="Script for psycholinguistic techniques (fMRi paradigm)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="031" label="Priming paradigm" def="Script for psycholinguistic techniques (priming)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="030" label="Self-paced listening" def="Script for psycholinguistic techniques (self-paced listening)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="029" label="Self-paced reading" def="Script for psycholinguistic techniques (self-paced reading)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="058" label="Other script for psycholinguistic techniques " def="Other script for psycholinguistic techniques "/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="042" label="Semi match guise test" def="Semi match guise test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="072" label="Sentence manipulation test" def="Sentence manipulation test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="048" label="Speaking test / Oral production test" def="Speaking test / Oral production test" alternate="Oral test"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="076" label="Narration / Story retelling " def="Narration / Story retelling "/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="093" label="Picture description" def="Picture description"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="092" label="Picture spot the difference" def="Picture spot the difference"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="110" label="Rating guidelines / Criteria" def="Rating guidelines / Criteria"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="111" label="Other speaking test / oral production test " def="Other speaking test / oral production test "/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="078" label="Speech perception / rating" def="Speech perception / rating"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="088" label="Discrimination task" def="Discrimination task"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="089" label="Identification task" def="Identification task"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="012" label="Rating scale" def="Rating scale"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="090" label="Transcription task" def="Transcription task"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="091" label="Other speech perception / rating task" def="Other speech perception / rating task"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="056" label="Stimulated recall" def="Stimulated recall"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="019" label="Stimuli for laboratory studies" def="Stimuli for laboratory studies"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="020" label="Audio" def="Stimuli for laboratory studies (audio)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="024" label="Video" def="Stimuli for laboratory studies (video)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="021" label="Visual" def="Stimuli for laboratory studies (visual)"> 
+          <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="023" label="Pictorial" def="Stimuli for laboratory studies (visual - pictorial)"/>  
+          <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="022" label="Verbal" def="Stimuli for laboratory studies (visual - verbal)"/> 
+        </type> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="107" label="Text editing" def="Text editing"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="081" label="Translation task" def="Translation task"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="082" label="L1 to L2 (L3, L4, etc.)" def="L1 to L2 (L3, L4, etc.)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="083" label="L2 (L3, L4, etc.) to L1" def="L2 (L3, L4, etc.) to L1"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="084" label="Other combination (e.g. L3 to L2)" def="Other combination (e.g. L3 to L2)"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="080" label="Verbal protocol" def="Verbal protocol"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="094" label="Diary writing instructions" def="Diary writing instructions"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="095" label="Other verbal protocol" def="Other verbal protocol"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="018" label="Video" def="Video"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="032" label="Vocabulary test" def="Vocabulary test"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="035" label="Productive" def="Vocabulary test (productive)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="034" label="Receptive" def="Vocabulary test (receptive)"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="016" label="Other vocabulary test" def="Vocabulary test"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="075" label="Word list" def="Word list"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="037" label="Working memory test" def="Working memory test" alternate="Working memory capacity test,WM"> 
+        <!-- 
+				<type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="042" label="Counting span" def="Working memory test (Counting span test)" broader="037"/>
+				-->  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="039" label="Listening span" def="Working memory test (Listening span)" alternate="WM"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="041" label="Operation / Digit span" def="Operation / Digit span" alternate="WM"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="040" label="Phonological short term memory" def="Working memory test (PSTM)" alternate="Phonological short term memory test,Phonological working memory test,WM,PSTM"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="038" label="Reading span" def="Working memory test (Reading span)" alternate="WM"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="015" label="Other working memory test" def="Working memory test" alternate="WM"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="047" label="Writing test" def="Writing test"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/instrumentType#" value="999" label="Other"/> 
+    </typeOfInstruments>  
+    <researchAreas name="Research Area" vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea"> 
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="017" label="Learner cognition"/> -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="018" label="Learner beliefs"/> -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="019" label="Learner metacognition"/> -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="041" label="Bilingualism and emotions" def="Bilingualism and emotions"/> -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="043" label="Computer-assisted language learning" def="Computer-assisted language learning"/> -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="045" label="Language Attrition" def="Language Attrition"/> -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="044" label="Learner silence" def="Learner silence"/> -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="042" label="Research methods" def="Research methods"/>  -->  
+      <!-- <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="046" label="Study abroad" def="Study abroad"/> -->  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="034" label="Acquisition"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="001" label="Aptitude"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="039" label="Attrition" def="Attrition"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="019" label="Bilingualism" def="Bilingualism"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="048" label="Community or heritage languages" def="Community or heritage languages"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="002" label="Complexity"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="022_1" label="Comprehension"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="037" label="Computer-assisted language learning" def="Computer-assisted language learning"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="047" label="Cross-linguistic influence" def="Cross-linguistic influence"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="003" label="Cultural identity"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="026" label="Culture"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="021" label="Discourse"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="004" label="Effectiveness of teaching"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="044" label="Error correction / Corrective feedback" def="Error correction / Corrective feedback"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="032" label="Figurative language (metaphor)"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="005" label="Fluency"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="021_1" label="Identity"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="051" label="Implicit learning" def="Implicit learning"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="020" label="Interaction"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="022" label="Learner attitudes"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="038" label="Learner silence" def="Learner silence"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="006" label="Learner strategies"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="007" label="Learning style"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="008" label="Lexicon (vocabulary)"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="009" label="Linguistic identity"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="028" label="Listening"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="018" label="Meta-analysis" def="Meta-analysis"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="010" label="Morphosyntax (grammar)"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="011" label="Motivation"> 
+        <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="053" label="Willingness to communicate" def="Willingness to communicate"/>  
+        <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="054" label="Other motivation" def="Other motivation"/> 
+      </researchArea>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="052" label="Multilingualism" def="Multilingualism"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="045" label="Native / Non-native" def="Native / Non-native"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="025" label="Phonology"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="012" label="Pragmatic competence"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="033" label="Processing"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="041" label="Proficiency" def="Proficiency"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="013" label="Pronunciation"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="014" label="Prosody"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="030" label="Reading"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="036" label="Research methods" def="Research methods"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="024" label="Self-efficacy"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="023" label="Sentence processing"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="029" label="Speaking / Oral production"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="040" label="Study abroad" def="Study abroad"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="055" label="Tasks" def="Tasks"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="016" label="Teacher cognition"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="017" label="Teacher education" def="Teacher education"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="043" label="Teaching materials and curriculum (syllabus, textbook design)" def="Teaching materials and curriculum (syllabus, textbook design)"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="027" label="Teaching methods (style, approach, technique)"> 
+        <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="056" label="Content and language integrated learning (CLIL)" def="Content and language integrated learning (CLIL)"/>  
+        <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="035" label="Processing instruction"/>  
+        <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="049" label="Task-based language teaching (TBLT)" def="Task-based language teaching (TBLT)"/>  
+        <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="050" label="Task repetition" def="Task repetition"/>  
+        <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="058" label="Other teaching method " def="Other teaching method "/> 
+      </researchArea>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="015" label="Teaching policy"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="042" label="Testing" def="Testing"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="046" label="Working memory" def="Working memory"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="031" label="Writing"/>  
+      <researchArea vocab="http://dlib.york.ac.uk/ontologies/iris/researchArea#" value="999" label="Other"/> 
+    </researchAreas>  
+    <linguisticTargets name="Linguistic Feature" vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget"> 
+      <!-- Morphosyntax (grammar) -->  
+      <!-- Lexis -->  
+      <!-- Pragmatics -->  
+      <!-- Phonology -->  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="027" label="Animacy" def="Animacy"/>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="041" label="Figurative language" def="Figurative language"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="045" label="Idiom" def="Idiom"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="042" label="Metaphor" def="Metaphor"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="043" label="Metonymy" def="Metonymy"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="044" label="Simile" def="Simile"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="046" label="Other" def="Other"/> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="016" label="Interfaces" def="Interfaces"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="033" label="Syntax-discourse" def="Syntax-discourse"/> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="007" label="Lexis (vocabulary)" def="Lexis (vocabulary)" narrower="008 009"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="008" label="Closed class" def="Lexis (vocabulary) - closed class" broader="007"> 
+          <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="034" label="Prepositions" def="Prepositions"/>  
+          <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="035" label="Other" def="Other"/> 
+        </linguisticTarget>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="047" label="Collocations/lexical chunks" def="Collocations/lexical chunks"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="031" label="Nonwords" def="Nonwords"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="009" label="Open class" def="Lexis (vocabulary) - open class" broader="007"> 
+          <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="038" label="Adjectives" def="Adjectives"/>  
+          <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="039" label="Adverbs" def="Adverbs"/>  
+          <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="036" label="Nouns" def="Nouns"/>  
+          <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="037" label="Verbs" def="Verbs"/>  
+          <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="040" label="Other" def="Other"/> 
+        </linguisticTarget> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="022" label="Morphology" def="Morphology"/>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="001" label="Morphosyntax (grammar)" def="Morphosyntax (grammar)" narrower="003 005 004 006 002"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="029" label="Articles" def="Articles"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="003" label="Aspect" def="Morphosyntax (grammar) - aspect" broader="001"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="005" label="Case" def="Morphosyntax (grammar) - case" broader="001"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="023" label="Determiners" def="Morphosyntax (grammar) - determiners" broader="001"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="006" label="Gender" def="Morphosyntax (grammar) - gender" broader="001"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="048" label="Mood/modals" def="Mood/modals"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="004" label="Number" def="Morphosyntax (grammar) - number" broader="001"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="049" label="Prefixes" def="Prefixes"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="028" label="Pronouns" def="Pronouns"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="030" label="Quantifiers" def="Quantifiers"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="024" label="Suffixes" def="Suffixes" broader="001"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="002" label="Tense" def="Morphosyntax (grammar) - tense" broader="001"/> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="026" label="Nonwords" def="Nonwords"/>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="057" label="Phonetics" def="Phonetics"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="059" label="Acoustic" def="Acoustic"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="058" label="Articulatory" def="Articulatory"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="060" label="Auditory" def="Auditory"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="061" label="Other" def="Other"/> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="017" label="Phonology" def="Phonology" narrower="019 020 018"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="019" label="Codas" def="Phonology - codas" broader="017"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="020" label="Stress" def="Phonology - stress" broader="017"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="018" label="Syllable" def="Phonology - syllable" broader="017"/> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="010" label="Pragmatics" def="Pragmatics" narrower="014 012 013 015 011"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="050" label="Agreements" def="Agreements"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="014" label="Apologies" def="Pragmatics - apologies" broader="010"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="052" label="Clarification" def="Clarification"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="012" label="Complaints" def="Pragmatics - complaints" broader="010"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="051" label="Disagreements" def="Disagreements"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="013" label="Greetings" def="Pragmatics - greetings" broader="010"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="015" label="Promises" def="Pragmatics - promises" broader="010"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="011" label="Requests" def="Pragmatics - requests" broader="010"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="053" label="Responding to invitations (accepting, declining, etc.)" def="Responding to invitations (accepting, declining, etc.)"/> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="032" label="Quantifier" def="Quantifier"/>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="025" label="Semantics" def="Semantics"/>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="021" label="Syntax" def="Syntax"> 
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="062" label="Interrogatives / Questions" def="Interrogatives / Questions"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="056" label="Part of speech / Agent-patient" def="Part of speech / Agent-patient"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="054" label="Passive / active voice" def="Passive / active voice"/>  
+        <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="055" label="Other" def="Other"/> 
+      </linguisticTarget>  
+      <linguisticTarget vocab="http://dlib.york.ac.uk/ontologies/iris/linguisticTarget#" value="999" label="Other"/> 
+    </linguisticTargets>  
+    <dataTypes name="Data Type" vocab="http://dlib.york.ac.uk/ontologies/iris/dataType"> 
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="014" label="Closed response format"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="003" label="Coding scheme for meta-analysis" def="Coding scheme for meta-analysis"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="015" label="Judgements"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="012" label="Open response"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="005" label="Oral comprehension"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="002" label="Oral production"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="012_1" label="Qualitative"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="001" label="Reaction times"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="011" label="Written comprehension"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="008" label="Written production"/>  
+      <dataType vocab="http://dlib.york.ac.uk/ontologies/iris/dataType#" value="999" label="Other"/> 
+    </dataTypes>  
+    <types name="File Type" vocab="http://purl.org/dc/dcmitype"> 
+      <type vocab="http://purl.org/dc/dcmitype#" label="Audio-recording" value="Sound"/>  
+      <type vocab="http://purl.org/dc/dcmitype#" label="Image or Graphic" value="StillImage"/>  
+      <type vocab="http://purl.org/dc/dcmitype#" label="Software Script" value="Software"/>  
+      <type vocab="http://purl.org/dc/dcmitype#" label="Text" value="Text"/>  
+      <type vocab="http://purl.org/dc/dcmitype#" label="Video" value="Video"/> 
+    </types>  
+    <required_software name="Proprietary Software Name" vocab="software"> 
+      <software label="DMDX" value="http://www.u.arizona.edu/~kforster/dmdx/dmdx.htm"/>  
+      <software label="EPrime" value="http://www.pstnet.com/eprime.cfm"/>  
+      <software label="Linger" value="http://tedlab.mit.edu/~dr/Linger/"/>  
+      <software label="MatLab" value="http://www.mathworks.co.uk/products/matlab/index.html"/>  
+      <software vocab="http://dlib.york.ac.uk/ontologies/iris/software#" value="001" label="New experimental setup (NESU)" def="New experimental setup (NESU)"/>  
+      <software label="Presentation" value=""/>  
+      <software label="PsyScope Classic" value="http://psy.ck.sissa.it"/>  
+      <software label="PsyScope X" value="http://psy.ck.sissa.it/"/>  
+      <software label="SuperLab" value="http://www.superlab.com/"/>  
+      <software label="SuperLab Pro" value="http://www.superlab.com/pro/"/>  
+      <software label="Other" value="999"/> 
+    </required_software>  
+    <!-- removed software platforms -->  
+    <funders name="Funder" vocab="http://dlib.york.ac.uk/ontologies/iris/funder"> 
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="001" label="Arts and Humanities Research Council (AHRC)"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="003" label="Economic and Social Research Council (ESRC)"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="004" label="European Commission"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="016" label="Fonds Wetenschappelijk Onderzoek (FWO)" def="Fonds Wetenschappelijk Onderzoek (FWO)"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="005" label="Fulbright"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="017" label="Irish Research Council for Humanities and Social Sciences" def="Irish Research Council for Humanities and Social Sciences"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="018" label="Irish Research Council for Humanities and Social Sciences" def="Irish Research Council for Humanities and Social Sciences"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="015" label="Japan Society for Promotion of Science" def="Japan Society for Promotion of Science"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="006" label="Leverhulme Trust"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="007" label="National Endowment for the Humanities"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="008" label="National Institutes of Health (NIH)"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="009" label="National Science Foundation (NSF)"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="002" label="Netherlands Organisation for Scientific Research (NWO)" def="Netherlands Organisation for Scientific Research (NWO)"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="019" label="Open Research Area in Europe for the Social Sciences (ORA)" def="Open Research Area in Europe for the Social Sciences (ORA)"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="010" label="Social Sciences and Humanities Research Council"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="011" label="Sociological Initiatives Foundation"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="012" label="Spencer Foundation"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="013" label="TESOL International Research Foundation"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="014" label="Utilika Foundation"/>  
+      <funder vocab="http://dlib.york.ac.uk/ontologies/iris/funder#" value="999" label="Other"/> 
+    </funders>  
+    <licences name="Licence Selection"> 
+      <licence label="Attribution-NonCommercial (CC BY-NC)"> 
+        <text>Attribution-NonCommercial (CC BY-NC)</text>  
+        <url>http://creativecommons.org/licenses/by-nc/3.0/</url> 
+      </licence>  
+      <licence label="Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)"> 
+        <text>Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)</text>  
+        <url>http://creativecommons.org/licenses/by-nc-sa/3.0/</url> 
+      </licence> 
+    </licences> 
+  </instrument>  
+  <participants> 
+    <participantTypes name="Participant Type" vocab="http://dlib.york.ac.uk/ontologies/iris/participantType"> 
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="013" label="Adolescent learners" def="Adolescent learners"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="016" label="Secondary/high school students" def="Secondary/high school students"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="019" label="Other adolescent learners" def="Other adolescent learners"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="020" label="Adults learners" def="Adults learners"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="014" label="University students" def="University students"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="025" label="Other adult learners" def="Other adult learners"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="004" label="Artificial language learners"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="003" label="Bilinguals"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="021" label="Adult" def="Adult"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="018" label="Early" def="Early"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="022" label="Late" def="Late"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="023" label="Other bilinguals " def="Other bilinguals "/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="017" label="First language attriters" def="First language attriters"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="002" label="First language learners"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="009" label="Foreign language learners"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="016_1" label="Heritage speakers" def="Heritage speakers"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="007" label="Language users"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="008" label="Monolinguals"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="010" label="Native speakers"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="006" label="Policy-makers"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="015" label="Primary school" def="Primary school"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="001" label="Second language learners"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="011" label="Teacher trainees"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="005" label="Teachers"/>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="012" label="Young learners" def="Young learners"> 
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="013" label="Preschool" def="Preschool"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="015" label="Primary" def="Primary"/>  
+        <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="024" label="Other young learners" def="Other young learners"/> 
+      </type>  
+      <type vocab="http://dlib.york.ac.uk/ontologies/iris/participantType#" value="999" label="Other"/> 
+    </participantTypes>  
+    <genders> 
+      <gender>male</gender>  
+      <gender>female</gender>  
+      <gender>mixed</gender> 
+    </genders>  
+    <proficiencies name="Proficiency of Learners" vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency"> 
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="001" label="Complete beginner" def="Complete beginner"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="002" label="Near beginner" def="Near beginner"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="003" label="Pre-intermediate" def="Pre-intermediate"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="004" label="Intermediate" def="Intermediate"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="005" label="Intermediate/advanced" def="Intermediate/advanced"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="006" label="Advanced" def="Advanced"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="007" label="Near native" def="Near native"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="008" label="Native" def="Native"/>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="009" label="Bilingual since infancy" def="Bilingual since infancy"/>  
+      <!-- CFER -->  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/" label="CFER" def="CFER" narrower="CFER/011 CFER/014 CFER/017"> 
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/011" label="Basic Speaker" def="CFER Basic speaker" broader="CFER/" narrower="CFER/012 CFER/013"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/012" label="Breakthrough or Beginner" def="CFER Basic speaker (Breakthrough or Beginner)" broader="CFER/011"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/013" label="Waystage or Elementary" def="CFER Basic speaker (Waystage or Elementary)" broader="CFER/011"/> 
+        </proficiency>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/014" label="Independent Speaker" def="CFER Basic Speaker" broader="CFER/" narrower="CFER/015 CFER/016"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/015" label="Threshold or Intermediate" def="CFER Independent speaker (Threshold or Intermediate)" broader="CFER/014"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/016" label="Vantage or Upper intermediate" def="CFER Independent speaker (Vantage or Upper intermediate)" broader="CFER/014"/> 
+        </proficiency>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/017" label="Proficient Speaker" def="CFER Proficient speaker" broader="CFER/" narrower="CFER/018 CFER/019"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/018" label="Effective Operational Proficiency or Advanced" def="CFER Proficient speaker (Effective Operational Proficiency or Advanced)" broader="CFER/017"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="CFER/019" label="Mastery or Proficiency" def="CFER Proficient speaker (Mastery or Proficiency)" broader="CFER/017"/> 
+        </proficiency> 
+      </proficiency>  
+      <!-- ACTFL  -->  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL" label="ACTFL" def="ACTFL" narrower="ACTFL/021 ACTFL/022 ACTFL/023 ACTFL/024 ACTFL/025 ACTFL/026 ACTFL/027 ACTFL/028 ACTFL/029 ACTFL/030"> 
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/021" label="Novice Low" def="ACTFL Novice Low" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/022" label="Novice Mid" def="ACTFL Novice Mid" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/023" label="Novice High" def="ACTFL Novice High" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/024" label="Intermediate Low" def="ACTFL Intermediate Low" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/025" label="Intermediate Mid" def="ACTFL Intermediate Mid" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/026" label="Intermediate High" def="ACTFL Intermediate High" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/027" label="Advanced Low" def="ACTFL Advanced Low" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/028" label="Advanced Mid" def="ACTFL Advanced Mid" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/029" label="Advanced High" def="ACTFL Advanced High" broader="ACTFL/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="ACTFL/030" label="Superior" def="ACTFL Superior" broader="ACTFL/"/> 
+      </proficiency>  
+      <!-- TOEFL -->  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL" label="TOEFL" def="TOEFL"> 
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/032" label="Reading / listening" def="TOEFL reading / listening" broader="TOEFL/" narrower="TOEFL/033 TOEFL/034 TOEFL/035"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/033" label="Low" def="TOEFL reading / listening - Low (0-13 pts)" broader="TOEFL/032"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/034" label="Intermediate" def="TOEFL reading / listening - Intermediate (14-21 pts)" broader="TOEFL/032"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/035" label="High" def="TOEFL reading / listening - High (22-30 pts)" broader="TOEFL/032"/> 
+        </proficiency>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/036" label="Speaking" def="TOEFL Speaking" broader="TOEFL/" narrower="TOEFL/037 TOEFL/038 TOEFL/039 TOEFL/040"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/037" label="Weak" def="TOEFL Speaking - Weak (0 – 1.0)" broader="TOEFL/036"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/038" label="Limited" def="TOEFL Speaking - Limited (1.5-2.0)" broader="TOEFL/036"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/039" label="Fair" def="TOEFL Speaking - Fair (2.5 – 3.0)" broader="TOEFL/036"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/040" label="Good" def="TOEFL Speaking - Good (3.5 – 4.0)" broader="TOEFL/036"/> 
+        </proficiency>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/041" label="Writing" def="TOEFL Writing" broader="TOEFL/" narrower="TOEFL/042 TOEFL/043 TOEFL/044"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/042" label="Limited" def="TOEFL Writing - Limited (1.0 – 2.0)" broader="TOEFL/041"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/043" label="Fair" def="TOEFL Writing - Fair (2.5 – 3.5)" broader="TOEFL/041/"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="TOEFL/044" label="Good" def="TOEFL Writing - Good (4.0 – 5.0)" broader="TOEFL/041/"/> 
+        </proficiency> 
+      </proficiency>  
+      <!-- IELTS -->  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS" label="IELTS (overall score)" def="IELTS (overall score)" narrower="IELTS/046 IELTS/047 IELTS/048 IELTS/049 IELTS/050 IELTS/051 IELTS/052 IELTS/053 IELTS/054"> 
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/046" label="Non User (1)" def="Non User (1)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/047" label="Intermittent User (2)" def="Intermittent User (2)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/048" label="Extremely Limited User (3)" def="Extremely Limited User (3)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/049" label="Limited User (4)" def="Limited User (4)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/050" label="Modest User (5)" def="Modest User (5)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/051" label="Competent User (6)" def="Competent User (6)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/052" label="Good User (7)" def="Good User (7)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/053" label="Very Good User (8)" def="Very Good User (8)" broader="IELTS/"/>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="IELTS/054" label="Expert User (9)" def="Expert User (9)" broader="IELTS/"/> 
+      </proficiency>  
+      <!-- OPT - Oxford Placement Test -->  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT" label="Oxford Placement Test" def="Oxford Placement Test" narrower="OTS/"> 
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/055" label="Basic speaker" def="Oxford Placement Test Basic speaker" broader="OTS/" narrower="OTS/056 OTS/057"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/056" label="Breakthrough or Beginner" def="Oxford Placement Test Basic speaker (Breakthrough or Beginner (score of 1-20))" broader="OTS/055"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/057" label="Waystage or Elementary" def="Oxford Placement Test Basic speaker (Waystage or Elementary (score of 20-40))" broader="OTS/055"/> 
+        </proficiency>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/059" label="Independent speaker" def="Oxford Placement Test Independent Speaker" broader="OTS/" narrower="OTS/060 OTS/061"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/060" label="Threshold or Intermediate" def="Oxford Placement Test Independent speaker (Threshold or Intermediate (score of 40-60))" broader="OTS/059"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/061" label="Vantage or Upper intermediate" def="Oxford Placement Test Independent speaker (Vantage or Upper intermediate (score of 60-80))" broader="OTS/059"/> 
+        </proficiency>  
+        <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/062" label="Proficient speaker" def="Oxford Placement Test Proficient Speaker" broader="OTS/" narrower="OTS/063 OTS/064"> 
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/063" label="Effective Operational Proficiency or Advanced" def="Oxford Placement Test Proficient speaker (Effective Operational Proficiency or Advanced (score of 80-100))" broader="OTS/062"/>  
+          <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="OPT/064" label="Mastery or Proficiency" def="Oxford Placement Test Proficient speaker (Mastery or Proficiency (score higher than 100))" broader="OTS/062"/> 
+        </proficiency> 
+      </proficiency>  
+      <proficiency vocab="http://dlib.york.ac.uk/ontologies/iris/proficiency#" value="999" label="Other" def="Other"/> 
+    </proficiencies>  
+    <domainOfUse name="Domain of use of language being learnt" vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse"> 
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="008" label="Academic" def="Academic"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="009" label="Higher Education" def="Higher Education"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="001" label="Home"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="007" label="Residence abroad" def="Residence abroad"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="002" label="School - language instruction only"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="003" label="School - subject(s) other than language"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="004" label="With friends"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="005" label="With wider family"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="006" label="Work"/>  
+      <domain vocab="http://dlib.york.ac.uk/ontologies/iris/domainOfUse#" value="999" label="Other"/> 
+    </domainOfUse> 
+  </participants>  
+  <relatedItems> 
+    <relatedItemType> 
+      <type>publication</type>  
+      <type>earlierVersion</type>  
+      <type>otherSource</type> 
+    </relatedItemType>  
+    <publicationTypes> 
+      <type vocab="http://purl.org/ontology/bibo/" label="Journal Article" value="http://purl.org/ontology/bibo/AcademicArticle"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Book" value="http://purl.org/ontology/bibo/Book"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Chapter" value="http://purl.org/ontology/bibo/Chapter"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Proceedings" value="http://purl.org/ontology/bibo/Proceedings"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Thesis" value="http://purl.org/ontology/bibo/Thesis"/> 
+    </publicationTypes>  
+    <ackPublicationTypes> 
+      <type vocab="http://purl.org/ontology/bibo/" label="Journal Article" value="http://purl.org/ontology/bibo/AcademicArticle"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Book" value="http://purl.org/ontology/bibo/Book"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Chapter" value="http://purl.org/ontology/bibo/Chapter"/>  
+      <type vocab="http://dlib.york.ac.uk/vocabs/" label="Electronic Resource" value="http://dlib.york.ac.uk/ontologies/iris/publicationType/ElectronicResource"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Proceedings" value="http://purl.org/ontology/bibo/Proceedings"/>  
+      <type vocab="http://purl.org/ontology/bibo/" label="Thesis" value="http://purl.org/ontology/bibo/Thesis"/>  
+      <type vocab="http://dlib.york.ac.uk/vocabs/" label="Other" value="http://dlib.york.ac.uk/ontologies/iris/publicationType/Other"/> 
+    </ackPublicationTypes>  
+    <!-- Updated publisher and journals lists 28/6/2012 -->  
+    <publishers vocab="http://dlib.york.ac.uk/ontologies/iris/publisher"> 
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Blackwell" value="005"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Cambridge University Press" value="001"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" value="019" label="Collins Educational" def="Collins Educational"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Continuum" value="003"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Elsevier" value="014"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Hodder and Stoughton" def="Hodder and Stoughton" value="018"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="John Benjamins" value="013"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Lawrence Erlbaum" value="004"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Longman" value="011"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Mouton de Gruyter" value="012"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Multilingual Matters" value="002"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Newbury House" value="010"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Oxford University Press" value="006"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Pearson" value="015"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" value="017" label="Peter Lang" def="Peter Lang"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Psychology Press" value="009"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Routledge" value="007"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Taylor and Francis" value="008"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" value="016" label="University of Hawai'i At Manoa, National Foreign Language Resource Center" def="University of Hawai'i At Manoa, National Foreign Language Resource Center"/>  
+      <publisher vocab="http://dlib.york.ac.uk/ontologies/iris/publisher#" label="Other" value="999"/> 
+    </publishers>  
+    <journals vocab="http://dlib.york.ac.uk/ontologies/iris/journal"> 
+      <!--<journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="027" label="Language Awareness" def="Language Awareness"/>-->  
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="024" label="Annual Review of Cognitive Linguistics" def="Annual Review of Cognitive Linguistics"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Applied Linguistics" def="Applied Linguistics" value="001"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Applied Psycholinguistics" def="Applied Psycholinguistics" value="002"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="046" label="Behavior Research Methods" def="Behavior Research Methods"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="022" label="Bilingualism: Language and Cognition" def="Bilingualism: Language and Cognition"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="025" label="British Journal of Educational Studies" def="British Journal of Educational Studies"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="062" label="CALICO Journal" def="CALICO Journal"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="023" label="Canadian Modern Language Review" def="Canadian Modern Language Review"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="034" label="Child Language Teaching and Therapy" def="Child Language Teaching and Therapy"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="021" label="Cognition" def="Cognition"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="036" label="Cognitive Psychology" def="Cognitive Psychology"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Current Directions in Psychological Science" value="016"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="056" label="Dutch Journal of Applied Linguistics" def="Dutch Journal of Applied Linguistics"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="059" label="Educational computing research" def="Educational computing research"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="026" label="Educational Studies" def="Educational Studies"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="035" label="ELT Journal" def="ELT Journal"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="037" label="European Journal of Teacher Education" def="European Journal of Teacher Education"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="040" label="Experimental Psychology: Human, Learning and Memory" def="Experimental Psychology: Human, Learning and Memory"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="063" label="Foreign Language Annals" def="Foreign Language Annals"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="045" label="Frontiers: The Interdisciplinary Journal of Study Abroad" def="Frontiers: The Interdisciplinary Journal of Study Abroad"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="041" label="Innovation in Language Learning and Teaching" def="Innovation in Language Learning and Teaching"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="International Journal of Applied Linguistics" value="017"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="060" label="International Journal of Bilingual Education and Bilingualism" def="International Journal of Bilingual Education and Bilingualism"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="044" label="International Journal of Educational Research" def="International Journal of Educational Research"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="038" label="International Journal of Speech Technology" def="International Journal of Speech Technology"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="International Review of Applied Linguistics" value="003"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="054" label="Journal of Child Language" def="Journal of Child Language"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="033" label="Journal of Educational and Social Research" def="Journal of Educational and Social Research"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Journal of Experimental Psychology: Learning, Memory, and Cognition" value="018"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="057" label="Journal of Immersion and Content-Based Language Education" def="Journal of Immersion and Content-Based Language Education"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="042" label="Journal of Language and Social Psychology" def="Journal of Language and Social Psychology"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Journal of Memory and Language" value="005"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="052" label="Journal of Multilingual and Multicultural Development" def="Journal of Multilingual and Multicultural Development"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="049" label="Journal of Psycholinguistic Research" def="Journal of Psycholinguistic Research"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="029" label="Journal of Speech, Language, and Hearing Research" def="Journal of Speech, Language, and Hearing Research"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="028" label="Language Acquisition" def="Language Acquisition"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="048" label="Language and Cognitive Processes" def="Language and Cognitive Processes"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="030" label="Language and Education" def="Language and Education"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Language Awareness" def="Language Awareness" value="019"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Language Learning" value="006"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Language Learning and Technology" value="020"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Language Policy" value="008"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="047" label="Language Sciences" def="Language Sciences"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Language Teaching" value="009"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Language Teaching Research" value="010"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="053" label="Language Testing" def="Language Testing"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="061" label="Language, Interaction and Acquisition" def="Language, Interaction and Acquisition"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="031" label="Lingua" def="Lingua"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="055" label="Linguistic Approaches to Bilingualism" def="Linguistic Approaches to Bilingualism"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="032" label="Linguistics and Education" def="Linguistics and Education"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="058" label="Memory and Cognition" def="Memory and Cognition"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="043" label="Reading in a Foreign Language" def="Reading in a Foreign Language"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Second Language Research" value="011"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Studies in Second Language Acquisition" value="012"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="050" label="Studies in Second Language Learning and Teaching" def="Studies in Second Language Learning and Teaching"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="System" value="013"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="051" label="TESL-EJ" def="TESL-EJ"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="039" label="TESOL Canada Journal" def="TESOL Canada Journal"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="004" label="TESOL in Context" def="TESOL in Context"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="TESOL Quarterly" value="014"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="The Language Learning Journal" value="007"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="The Modern Language Journal" value="015"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" value="027" label="The Quarterly Journal of Experimental Psychology" def="The Quarterly Journal of Experimental Psychology"/>
+      <journal vocab="http://dlib.york.ac.uk/ontologies/iris/journal#" label="Other" value="999"/>
+    </journals> 
+  </relatedItems> 
+</IRIS_Data_Dict>

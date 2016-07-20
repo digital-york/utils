@@ -3,3 +3,7 @@ checkaudiocustomlabel/pids.properties
 
 irisdump/system.yaml
 irisdump/pids.properties
+
+checkapprovedinstypes/system.yaml
+checkapprovedinstypes/pids.properties
+

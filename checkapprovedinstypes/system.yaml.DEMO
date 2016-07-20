@@ -1,0 +1,4 @@
+protocol=https
+host=HOST
+admin=ADMIN_USER_NAME
+password=ADMIN_PASSWORD
