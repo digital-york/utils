@@ -39,16 +39,23 @@ class CheckDcIdentifier
       unique_labels = Set.new()
 
       puts 'checking dc:identifier for ' + pid + ' ...'
-      dc = conn.get '/fedora/objects/'+pid+'/datastreams/DC/content'
-
 	  needtochange = true
-      dc_doc      = Nokogiri::XML(dc.body.to_s)
-      dcidentifiers = dc_doc.xpath('/oaidc:dc/dc:identifier', @namespaces)
-      for dcidentifier in dcidentifiers
-        if dcidentifier.content == pid
-          needtochange = false
-        end
+
+	  solr     = conn.get '/solr/select/?q=PID:'+(pid.sub! ':', '?')
+	  solr_doc = Nokogiri::XML(solr.body.to_s)
+	  dcidentifier = solr_doc.xpath("/response/result/doc/arr[@name='dc.identifier']/str[.='"+pid+"']")
+      if !dcidentifier.nil?
+        needtochange = false
       end
+	  
+#      dc = conn.get '/fedora/objects/'+pid+'/datastreams/DC/content'
+#      dc_doc      = Nokogiri::XML(dc.body.to_s)
+#      dcidentifiers = dc_doc.xpath('/oaidc:dc/dc:identifier', @namespaces)
+#      for dcidentifier in dcidentifiers
+#        if dcidentifier.content == pid
+#          needtochange = false
+#        end
+#      end
 
       if needtochange == true
 	    puts 'updating DC'
