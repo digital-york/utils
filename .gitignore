@@ -7,3 +7,5 @@ irisdump/pids.properties
 checkapprovedinstypes/system.yaml
 checkapprovedinstypes/pids.properties
 
+checkdcidentifier/system.yaml
+checkdcidentifier/pids.properties
