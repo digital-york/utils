@@ -71,12 +71,10 @@ class UpdateNotes
       # NOW, update Fedora datastream
       if changed == true
         print '     Updating notes field ... '.colorize(:color => :green)
-        # puts iris_doc.to_xml
-#=begin
+
         resp = conn.put '/fedora/objects/'+pid+'/datastreams/IRIS', iris_doc.to_xml do |req|
           req.headers['Content-Type'] = 'text/xml'
         end
-#=end
         puts 'done.'
       end
     end
@@ -106,43 +104,9 @@ class UpdateNotes
     result
   end
 
-=begin
-  def extract_year_from_references(xml_doc)
-    r = ''
-    year1 = '0'
-    year2 = '0'
-    relatedItems = xml_doc.xpath("/iris:iris/iris:relatedItems/iris:relatedItem[@type='publication']")
-
-    relatedItems.each do |relatedItem|
-      y = relatedItem.xpath("iris:yearOfPublication").text
-      if year1=='0' or y.to_i < year1.to_i
-        year1 = y
-      end
-      if year2=='0' or y.to_i > year2.to_i
-        year2 = y
-      end
-    end
-
-    if year1 == year2
-      r = year1
-    else
-      r = year1 + '-' + year2
-    end
-    r
-  end
-=end
-
 end
 
 un = UpdateNotes.new()
-# un.update_notes()
-
-#s = 'SPECIAL COLLECTION - SELF-PACED READING. Thompson, Marsden, with Plonsky. SPECIAL COLLECTION - GRAMMATICALITY/ACCEPTABILITY JUDGEMENT TESTS - Plonsky, Marsden, Gass, Spinner, Crowther'
-#puts s
-#us = un.get_updated_text(s, '1996-1997')
-#puts ' >> '
-#puts us
-#pids = ['york:927969','york:928346','york:926683']
 un.update_notes()
 
 
