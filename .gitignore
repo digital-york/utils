@@ -9,3 +9,6 @@ checkapprovedinstypes/pids.properties
 
 checkdcidentifier/system.yaml
 checkdcidentifier/pids.properties
+
+updatenotes/system.yaml
+updatenotes/pids.properties
