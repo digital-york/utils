@@ -12,3 +12,5 @@ checkdcidentifier/pids.properties
 
 updatenotes/system.yaml
 updatenotes/pids.properties
+
+iris_batch_uploader/system.yaml
