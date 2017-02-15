@@ -24,6 +24,7 @@ class BatchUpdater
     @path     = @props['path']
     @dd_commons_file = @props['dd_commons']
     @dd_authors_file = @props['dd_authors']
+    @dd_languages_file = @props['dd_languages']
 
     @props2    = PropertiesManager.new("excel_settings.yaml").getPropertiesHash()
     @sheetname= @props2['sheetname']
@@ -68,8 +69,9 @@ class BatchUpdater
     puts ' done.'
 
     print 'loading data dictionaries ... '
-    @dd_commons_doc = Nokogiri::XML(File.open(@dd_commons_file))
-    @dd_authors_doc = Nokogiri::XML(File.open(@dd_authors_file))
+    @dd_commons_doc   = Nokogiri::XML(File.open(@dd_commons_file))
+    @dd_authors_doc   = Nokogiri::XML(File.open(@dd_authors_file))
+    @dd_languages_doc = Nokogiri::XML(File.open(@dd_languages_file))
 
     puts ' done.'
   end
@@ -387,15 +389,118 @@ class BatchUpdater
                   end
                 end
 
-                # processing 
+                # processing l1
+                if !language1.nil? and language1.strip!=''
+                  xml['iris'].firstLanguage() {
+                    xml.text(language1.strip)
+                  }
+                end
 
+                # processing l2
+                if !language2.nil? and language2.strip!=''
+                  xml['iris'].targetLanguage() {
+                    xml.text(language2.strip)
+                  }
+                end
               }
 
               ###########################################################################
               # relatedItems
               xml['iris'].relatedItems() {
+                xml['iris'].relatedItem(:type=>'publication') {
+                  # processing publication type
+                  if !publication1_type.nil?
+                    xpath = "/IRIS_Data_Dict/relatedItems/publicationTypes/type[@label='"+publication1_type.strip+"']/@value"
+                    v = dd_value_from_xpath(xpath)
+                    xml['iris'].publicationType() {
+                      xml.text(publication1_type.strip)
+                    }
+                  end
 
+                  # processing authors
+                  type = 'new'
+                  if is_author_in_dd(publication1_author1.strip)
+                    type = 'auto'
+                  end
+                  xml['iris'].author(:type => type) {
+                    xml['iris'].fullName  publication1_author1.strip
+                    xml['iris'].lastName  publication1_author1.split(',')[0].strip
+                    xml['iris'].firstName publication1_author1.split(',')[1].strip
+                  }
+                  if !publication1_author2.nil? and publication1_author2.to_s.strip!='' and publication1_author2.to_s.strip!='0'
+                    type = 'new'
+                    if is_author_in_dd(publication1_author2.strip)
+                      type = 'auto'
+                    end
+                    xml['iris'].author(:type => type) {
+                      xml['iris'].fullName  publication1_author2.strip
+                      xml['iris'].lastName  publication1_author2.split(',')[0].strip
+                      xml['iris'].firstName publication1_author2.split(',')[1].strip
+                    }
+                  end
+                  if !publication1_author3.nil?  and publication1_author3.to_s.strip!='' and publication1_author3.to_s.strip!='0'
+                    type = 'new'
+                    if is_author_in_dd(publication1_author3.strip)
+                      type = 'auto'
+                    end
+                    xml['iris'].author(:type => type) {
+                      xml['iris'].fullName  publication1_author3.strip
+                      xml['iris'].lastName  publication1_author3.split(',')[0].strip
+                      xml['iris'].firstName publication1_author3.split(',')[1].strip
+                    }
+                  end
 
+                  if !publication1_author4.nil?  and publication1_author4.to_s.strip!='' and publication1_author4.to_s.strip!='0'
+                    type = 'new'
+                    if is_author_in_dd(publication1_author4.strip)
+                      type = 'auto'
+                    end
+                    xml['iris'].author(:type => type) {
+                      xml['iris'].fullName  publication1_author4.strip
+                      xml['iris'].lastName  publication1_author4.split(',')[0].strip
+                      xml['iris'].firstName publication1_author4.split(',')[1].strip
+                    }
+                  end
+
+                  if !publication1_author5.nil?  and publication1_author5.to_s.strip!='' and publication1_author5.to_s.strip!='0'
+                    type = 'new'
+                    if is_author_in_dd(publication1_author5.strip)
+                      type = 'auto'
+                    end
+                    xml['iris'].author(:type => type) {
+                      xml['iris'].fullName  publication1_author5.strip
+                      xml['iris'].lastName  publication1_author5.split(',')[0].strip
+                      xml['iris'].firstName publication1_author5.split(',')[1].strip
+                    }
+                  end
+
+                  if !publication1_author6.nil? and publication1_author6.to_s.strip!='' and publication1_author6.to_s.strip!='0'
+                    type = 'new'
+                    if is_author_in_dd(publication1_author6.strip)
+                      type = 'auto'
+                    end
+                    xml['iris'].author(:type => type) {
+                      xml['iris'].fullName  publication1_author6.strip
+                      xml['iris'].lastName  publication1_author6.split(',')[0].strip
+                      xml['iris'].firstName publication1_author6.split(',')[1].strip
+                    }
+                  end
+
+                  # processing title
+                  
+
+                  # processing journal
+
+                  # processing date
+
+                  # processing volume
+
+                  # processing issue no
+
+                  # processing page no from
+
+                  # processing page no to
+                }
               }
             }
           end
