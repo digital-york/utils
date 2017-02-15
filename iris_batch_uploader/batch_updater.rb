@@ -487,19 +487,97 @@ class BatchUpdater
                   end
 
                   # processing title
-                  
+                  if !publication1_title.nil?
+                    xml['iris'].itemTitle(:type => '') {
+                      xml.text publication1_title.strip
+                    }
+                  end
 
                   # processing journal
+                  if !publication1_journal.nil?
+                    xpath = "/IRIS_Data_Dict/relatedItems/journals/journal[@label='"+publication1_journal.strip+"']/@value"
+                    v = dd_value_from_xpath(xpath)
+
+                    newValue = nil
+                    if v.nil?
+                      v = '999'
+                      newValue =publication1_journal.strip
+                    end
+
+                    if newValue.nil?
+                      xml['iris'].journal() {
+                        xml.text(v)
+                      }
+                    else
+                      xml['iris'].journal(:newValue=>newValue) {
+                        xml.text(v)
+                      }
+                    end
+                  end
 
                   # processing date
+                  if !publication1_date.nil?
+                    xml['iris'].yearOfPublication() {
+                      xml.text(publication1_date)
+                    }
+                  end
 
                   # processing volume
+                  if !publication1_volume.nil?
+                    xml['iris'].volume() {
+                      xml.text(publication1_volume)
+                    }
+                  end
 
                   # processing issue no
+                  if !publication1_issue_no.nil?
+                    xml['iris'].issue() {
+                      xml.text(publication1_issue_no)
+                    }
+                  end
 
                   # processing page no from
+                  if !publication1_page_number_from.nil?
+                    xml['iris'].pageFrom() {
+                      xml.text(publication1_page_number_from)
+                    }
+                  end
 
                   # processing page no to
+                  if !publication1_page_number_to.nil?
+                    xml['iris'].pageTo() {
+                      xml.text(publication1_page_number_to)
+                    }
+                  end
+
+                  # processing doi
+                  if !publication1_doi.nil?
+                    xml['iris'].identifier() {
+                      xml.text(publication1_doi)
+                    }
+                  end
+                }
+              }
+
+              ###########################################################################
+              # settings
+              xml['iris'].settings() {
+                xml['iris'].feedback() {
+                  xml.text('1')
+                }
+                xml['iris'].notifyDownloads() {
+                  xml.text('true')
+                }
+                # processing email
+                if !email.nil?
+                  xml['iris'].email() {
+                    xml.text(email)
+                  }
+                end
+                xml['iris'].comments() {
+                }
+                xml['iris'].licenceagreement() {
+                  xml.text('true')
                 }
               }
             }
