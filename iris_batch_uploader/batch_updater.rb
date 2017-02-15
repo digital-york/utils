@@ -22,6 +22,8 @@ class BatchUpdater
     @admin    = @props['admin']
     @password = @props['password']
     @path     = @props['path']
+    @dd_commons_file = @props['dd_commons']
+    @dd_authors_file = @props['dd_authors']
 
     @props2    = PropertiesManager.new("excel_settings.yaml").getPropertiesHash()
     @sheetname= @props2['sheetname']
@@ -63,6 +65,21 @@ class BatchUpdater
     @column_publication1_doi              = @props2['column_publication1_doi'].to_i
     @column_email                         = @props2['column_email'].to_i
     puts ' done.'
+
+    print 'loading data dictionaries ... '
+    @dd_commons_doc = Nokogiri::XML(File.open(@dd_commons_file))
+    @dd_authors_doc = Nokogiri::XML(File.open(@dd_authors_file))
+
+    puts ' done.'
+  end
+
+  def is_author_in_dd(author)
+    a = @dd_authors_doc.at_xpath("/authors/author[.='"+author+"']")
+    !a.nil?
+  end
+
+  def dd_value_from_xpath(xpath)
+    v = @dd_commons_doc.at_xpath(xpath)
   end
 
   def update()
@@ -134,67 +151,92 @@ class BatchUpdater
           publication1_doi              = sheet.cell(row, @column_publication1_doi)
           email                         = sheet.cell(row, @column_email)
 
-=begin
-          puts author1
-
-            puts author2
-          end
-          if !author3.nil?
-            puts author3
-          end
-          if !author4.nil?
-            puts author4
-          end
-          if !author5.nil?
-            puts author5
-          end
-          if !author6.nil?
-            puts author6
-          end
-=end
           builder = Nokogiri::XML::Builder.new do |xml|
             xml['iris'].iris('xmlns:iris' => @IRIS_NS) {
               xml['iris'].instrument() {
-                xml['iris'].creator() {
+                type = 'new'
+                if is_author_in_dd(author1.strip)
+                  type = 'auto'
+                end
+                xml['iris'].creator(:type => type) {
                   xml['iris'].fullName  author1.strip
                   xml['iris'].lastName  author1.split(',')[0].strip
                   xml['iris'].firstName author1.split(',')[1].strip
                 }
                 if !author2.nil?
-                  xml['iris'].creator() {
+                  type = 'new'
+                  if is_author_in_dd(author2.strip)
+                    type = 'auto'
+                  end
+                  xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author2.strip
                     xml['iris'].lastName  author2.split(',')[0].strip
                     xml['iris'].firstName author2.split(',')[1].strip
                   }
                 end
                 if !author3.nil?
-                  xml['iris'].creator() {
+                  type = 'new'
+                  if is_author_in_dd(author3.strip)
+                    type = 'auto'
+                  end
+                  xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author3.strip
                     xml['iris'].lastName  author3.split(',')[0].strip
                     xml['iris'].firstName author3.split(',')[1].strip
                   }
                 end
                 if !author4.nil?
-                  xml['iris'].creator() {
+                  type = 'new'
+                  if is_author_in_dd(author4.strip)
+                    type = 'auto'
+                  end
+                  xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author4.strip
                     xml['iris'].lastName  author4.split(',')[0].strip
                     xml['iris'].firstName author4.split(',')[1].strip
                   }
                 end
                 if !author5.nil?
-                  xml['iris'].creator() {
+                  type = 'new'
+                  if is_author_in_dd(author5.strip)
+                    type = 'auto'
+                  end
+                  xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author5.strip
                     xml['iris'].lastName  author5.split(',')[0].strip
                     xml['iris'].firstName author5.split(',')[1].strip
                   }
                 end
                 if !author6.nil?
-                  xml['iris'].creator() {
+                  type = 'new'
+                  if is_author_in_dd(author6.strip)
+                    type = 'auto'
+                  end
+                  xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author6.strip
                     xml['iris'].lastName  author6.split(',')[0].strip
                     xml['iris'].firstName author6.split(',')[1].strip
                   }
                 end
+
+                if !instrumenttype1.nil?
+                  xpath = "/IRIS_Data_Dict/instrument/typeOfInstruments//type[@label='"+instrumenttype1.strip+"']/@value"
+                  v = dd_value_from_xpath(xpath)
+                  primary = v # assuming first ins type is the primary type
+
+                  if !instrumenttype2.nil?
+                    xpath = "/IRIS_Data_Dict/instrument/typeOfInstruments//type[@label='"+instrumenttype2.strip+"']/@value"
+                    v2 = dd_value_from_xpath(xpath)
+                    if !v2.nil?
+                      v = v.to_s + ' ' + v2.to_s
+                    end
+                  end
+
+                  xml['iris'].instrumentType(:primary=>primary) {
+                    xml.text(v)
+                  }
+                end
+
               }
             }
           end
