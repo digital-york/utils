@@ -42,6 +42,7 @@ class BatchUpdater
     @column_typeoffile1                   = @props2['column_typeoffile1'].to_i
     @column_typeoffile2                   = @props2['column_typeoffile2'].to_i
     @column_software                      = @props2['column_software'].to_i
+    @column_other_software_url            = @props2['column_other_software_url'].to_i
     @column_instrumenttitle               = @props2['column_instrumenttitle'].to_i
     @column_notes                         = @props2['column_notes'].to_i
     @column_participanttype1              = @props2['column_participanttype1'].to_i
@@ -128,6 +129,7 @@ class BatchUpdater
           typeoffile1                   = sheet.cell(row, @column_typeoffile1)
           typeoffile2                   = sheet.cell(row, @column_typeoffile2)
           software                      = sheet.cell(row, @column_software)
+          other_software_url            = sheet.cell(row, @column_other_software_url)
           instrumenttitle               = sheet.cell(row, @column_instrumenttitle)
           notes                         = sheet.cell(row, @column_notes)
           participanttype1              = sheet.cell(row, @column_participanttype1)
@@ -153,7 +155,12 @@ class BatchUpdater
 
           builder = Nokogiri::XML::Builder.new do |xml|
             xml['iris'].iris('xmlns:iris' => @IRIS_NS) {
+
+              ###########################################################################
+              # instrument
               xml['iris'].instrument() {
+
+                # processing authors
                 type = 'new'
                 if is_author_in_dd(author1.strip)
                   type = 'auto'
@@ -219,9 +226,15 @@ class BatchUpdater
                   }
                 end
 
+                # processing instrument types
                 if !instrumenttype1.nil?
                   xpath = "/IRIS_Data_Dict/instrument/typeOfInstruments//type[@label='"+instrumenttype1.strip+"']/@value"
                   v = dd_value_from_xpath(xpath)
+                  newValue = nil
+                  if v.nil?
+                    v       = '999'
+                    newValue = instrumenttype1.strip
+                  end
                   primary = v # assuming first ins type is the primary type
 
                   if !instrumenttype2.nil?
@@ -232,10 +245,156 @@ class BatchUpdater
                     end
                   end
 
-                  xml['iris'].instrumentType(:primary=>primary) {
-                    xml.text(v)
+                  if newValue.nil?
+                    xml['iris'].instrumentType(:primary=>primary) {
+                      xml.text(v)
+                    }
+                  else
+                    xml['iris'].instrumentType(:primary=>primary, :newValue=>newValue) {
+                      xml.text(v)
+                    }
+                  end
+                end
+
+                # processing research areas
+                if !reseracharea1.nil?
+                  xpath = "/IRIS_Data_Dict/instrument/researchAreas//researchArea[@label='"+reseracharea1.strip+"']/@value"
+                  v = dd_value_from_xpath(xpath)
+                  newValue = nil
+                  if v.nil?
+                    v       = '999'
+                    newValue = reseracharea1.strip
+                  end
+
+                  if !reseracharea2.nil?
+                    xpath = "/IRIS_Data_Dict/instrument/researchAreas//researchArea[@label='"+reseracharea2.strip+"']/@value"
+                    v2 = dd_value_from_xpath(xpath)
+                    if !v2.nil?
+                      v = v.to_s + ' ' + v2.to_s
+                    end
+                  end
+
+                  if !reseracharea3.nil?
+                    xpath = "/IRIS_Data_Dict/instrument/researchAreas//researchArea[@label='"+reseracharea3.strip+"']/@value"
+                    v3 = dd_value_from_xpath(xpath)
+                    if !v3.nil?
+                      v = v.to_s + ' ' + v3.to_s
+                    end
+                  end
+
+                  if newValue.nil?
+                    xml['iris'].researchArea() {
+                      xml.text(v)
+                    }
+                  else
+                    xml['iris'].researchArea(:newValue=>newValue) {
+                      xml.text(v)
+                    }
+                  end
+                end
+
+                # Processing type of file
+                # processing research areas
+                if !typeoffile1.nil?
+                   xpath = "/IRIS_Data_Dict/instrument/types/type[@label='"+typeoffile1.strip+"']/@value"
+                   v = dd_value_from_xpath(xpath)
+
+                   typeoffile = typeoffile1.strip
+                   if !typeoffile2.nil?
+                     xpath = "/IRIS_Data_Dict/instrument/types/type[@label='"+typeoffile2.strip+"']/@value"
+                     v2 = dd_value_from_xpath(xpath)
+                     v = v.to_s + ' ' + v2.to_s.strip
+                   end
+                   xml['iris'].type() {
+                     xml.text(v)
+                   }
+
+                   # Add software details if 'Software' is ticked
+                   if v.include? 'Software' and !software.nil?
+                     xpath = "/IRIS_Data_Dict/instrument/required_software/software[@label='"+software.strip+"']/@value"
+                     v = dd_value_from_xpath(xpath)
+
+                     newValue = nil
+                     href     = nil
+
+                     if v.nil?
+                       v = '999'
+                       newValue = software.strip
+                       href     = other_software_url
+                     end
+
+                     if !newValue.nil?
+                       xml['iris'].requires() {
+                         xml['iris'].software() {
+                           xml.text(v)
+                         }
+                       }
+                     else
+                       xml['iris'].requires() {
+                         xml['iris'].software(:href=>href, :newValue=>newValue) {
+                           xml.text(v)
+                         }
+                       }
+                     end
+                   end
+                end
+
+                # processing instrumenttitle
+                if !instrumenttitle.nil?
+                  xml['iris'].title() {
+                    xml.text(instrumenttitle.strip)
                   }
                 end
+
+                # processing notes
+                if !notes.nil?
+                  xml['iris'].notes() {
+                    xml.text(notes.strip)
+                  }
+                end
+              }
+
+              ###########################################################################
+              # participants
+              xml['iris'].participants() {
+
+                # processing participant types
+                if !participanttype1.nil?
+                  xpath = "/IRIS_Data_Dict/participants/participantTypes//type[@label='"+participanttype1.strip+"']/@value"
+                  v = dd_value_from_xpath(xpath)
+                  newValue = nil
+                  if v.nil?
+                    v        = '999'
+                    newValue = participanttype1.strip
+                  end
+
+                  if !participanttype2.nil?
+                    xpath = "/IRIS_Data_Dict/participants/participantTypes//type[@label='"+participanttype2.strip+"']/@value"
+                    v2 = dd_value_from_xpath(xpath)
+                    if !v2.nil?
+                      v = v.to_s + ' ' + v2.to_s
+                    end
+                  end
+
+                  if newValue.nil?
+                    xml['iris'].participantType() {
+                      xml.text(v)
+                    }
+                  else
+                    xml['iris'].participantType(:newValue=>newValue) {
+                      xml.text(v)
+                    }
+                  end
+                end
+
+                # processing 
+
+              }
+
+              ###########################################################################
+              # relatedItems
+              xml['iris'].relatedItems() {
+
 
               }
             }
@@ -255,3 +414,7 @@ end
 
 bu = BatchUpdater.new()
 bu.update()
+
+
+
+
