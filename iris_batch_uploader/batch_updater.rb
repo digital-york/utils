@@ -15,7 +15,12 @@ class BatchUpdater
   # @namespaces = { 'iris'   => 'http://iris-database.org/iris'}
 
   def initialize()
-    @IRIS_NS    = 'http://iris-database.org/iris'
+    @IRIS_NS         = 'http://iris-database.org/iris'
+    @RDF_NS          = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+    @REL_INT_NS      = 'http://dlib.york.ac.uk/rel-int#'
+    @FEDORA_MODEL_NS = 'info:fedora/fedora-system:def/model#'
+    @REL_NS          = 'info:fedora/fedora-system:def/relations-external#'
+
     print 'loading system properties ... '
     @props    = PropertiesManager.new("system.yaml").getPropertiesHash()
     @protocol = @props['protocol']
@@ -31,6 +36,9 @@ class BatchUpdater
     @gmail_pass            = @props['gmail_pass']
     @gmail_to              = @props['gmail_to']
     @gmail_default_subject = @props['gmail_default_subject']
+
+    @xslt                   = @props['iris_to_dc_xslt']
+    @iris_parent_collection = @props['iris_collection']
 
     @props2    = PropertiesManager.new("excel_settings.yaml").getPropertiesHash()
     @sheetname= @props2['sheetname']
@@ -104,9 +112,12 @@ class BatchUpdater
       puts 'Analyzing ' + filename + ' ... '
       iris_metadata = excel_to_iris_xmls(@path + filename)
       iris_metadata.each do |iris|
-        puts '--------------------------'
-        puts iris
+        dc = iris_to_dc(iris)
+        #puts '--------------------------'
+        #puts dc
       end
+      puts rels_int('york:3')
+      puts rels_ext('york:3')
     end
 
     #send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,@gmail_default_subject,"BODYYYYYYYYYY",nil)
@@ -606,6 +617,38 @@ class BatchUpdater
 
     iris_metadata
 
+  end
+
+  # convert IRIS to DC
+  def iris_to_dc(iris)
+    xsl = Nokogiri::XSLT(File.read(@xslt))
+    xml = Nokogiri::XML(iris)
+    xsl.apply_to(xml).to_s
+  end
+
+  def rels_int(pid)
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml['rdf'].RDF('xmlns:rdf' => @RDF_NS, 'xmlns:rel-int' => @REL_INT_NS) {
+        xml['rdf'].Description(:'rdf:about' => 'info:fedora/'+pid+'/THUMBNAIL_IMAGE') {
+          xml['rel-int'].hasDatastreamLabel() {
+            xml.text('Thumbnail')
+          }
+        }
+      }
+    end
+    builder.to_xml
+  end
+
+  def rels_ext(pid)
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml['rdf'].RDF('xmlns:rdf' => @RDF_NS, 'xmlns:fedora-model' => @FEDORA_MODEL_NS, 'xmlns:rel' => @REL_NS) {
+        xml['rdf'].Description(:'rdf:about' => 'info:fedora/'+pid) {
+          xml['rel'].isMemberOf(:'rdf:resource'=>'info:fedora/'+@iris_parent_collection)
+          xml['fedora-model'].hasModel(:'rdf:resource'=>'info:fedora/york:CModel-Iris')
+        }
+      }
+    end
+    builder.to_xml
   end
 
   def ingest(iris)
