@@ -5,6 +5,7 @@ require 'faraday'
 require "nokogiri"
 require 'nokogiri-pretty'
 require 'colorize'
+require 'gmail'
 
 # NB: This script expects that there are ONLY SPECIAL COLLECTION texts in the notes field.
 #     If there are any additional texts, e.g. author entered original notes text, and then IRIS admins entered special collection text,
@@ -25,6 +26,11 @@ class BatchUpdater
     @dd_commons_file = @props['dd_commons']
     @dd_authors_file = @props['dd_authors']
     @dd_languages_file = @props['dd_languages']
+
+    @gmail_user            = @props['gmail_user']
+    @gmail_pass            = @props['gmail_pass']
+    @gmail_to              = @props['gmail_to']
+    @gmail_default_subject = @props['gmail_default_subject']
 
     @props2    = PropertiesManager.new("excel_settings.yaml").getPropertiesHash()
     @sheetname= @props2['sheetname']
@@ -96,15 +102,22 @@ class BatchUpdater
     Dir.foreach(@path) do |filename|
       next if filename == '.' or filename == '..'
       puts 'Analyzing ' + filename + ' ... '
-      excel_to_iris_xmls(@path + filename)
+      iris_metadata = excel_to_iris_xmls(@path + filename)
+      iris_metadata.each do |iris|
+        puts '--------------------------'
+        puts iris
+      end
     end
 
+    #send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,@gmail_default_subject,"BODYYYYYYYYYY",nil)
   end
 
   def excel_to_iris_xmls(excel_file_name)
-    xsl = Roo::Spreadsheet.open(excel_file_name)
+    iris_metadata = Set.new
 
+    xsl = Roo::Spreadsheet.open(excel_file_name)
     sheet = xsl.sheet(@sheetname)
+
 
     if !sheet.nil?
       last_row    = sheet.last_row
@@ -583,7 +596,7 @@ class BatchUpdater
             }
           end
 
-          puts builder.to_xml
+          iris_metadata << builder.to_xml
 
         end
       else
@@ -591,13 +604,27 @@ class BatchUpdater
       end
     end
 
+    iris_metadata
+
   end
 
+  def ingest(iris)
+
+  end
+
+  def send_via_gmail(user,pass,_to,_subject,_body,attach_file_name)
+    gmail = Gmail.connect(user, pass)
+    email = gmail.compose do
+      to _to
+      subject _subject
+      body _body
+      if !attach_file_name.nil?
+        add_file attach_file_name
+      end
+    end
+    email.deliver!
+  end
 end
 
 bu = BatchUpdater.new()
 bu.update()
-
-
-
-
