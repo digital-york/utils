@@ -136,6 +136,7 @@ class BatchUpdater
             ingest(conn, iris)
           rescue Exception => e
             @LOG.error(e.message)
+            @LOG.error(iris)
           end
         end
         @LOG.debug('Moving file ' + filename + ' to ' + @processed_path)
