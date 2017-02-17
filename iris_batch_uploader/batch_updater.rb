@@ -39,6 +39,17 @@ class BatchUpdater
     @object_ownerid         = @props['object_ownerid']
     @object_namespace       = @props['object_namespace']
 
+    @default_iris_url       = @props['iris.instruments.url']
+    @thumbnail_ds_id        = @props['iris.ds.thumbnail.id']
+    @thumbnail_ds_label     = @props['iris.ds.thumbnail.label']
+
+    @sound_thumbnail        = @props['iris.ds.thumbnail.sound']
+    @video_thumbnail        = @props['iris.ds.thumbnail.video']
+    @text_thumbnail         = @props['iris.ds.thumbnail.text']
+    @image_thumbnail        = @props['iris.ds.thumbnail.stillimage']
+    @software_thumbnail     = @props['iris.ds.thumbnail.software']
+    @multi_thumbnail        = @props['iris.ds.thumbnail.multi']
+
     @props2    = PropertiesManager.new("excel_settings.yaml").getPropertiesHash()
     @sheetname= @props2['sheetname']
 
@@ -662,6 +673,7 @@ class BatchUpdater
 =end
 pid = 'york:8367349'
 
+=begin
     # ingest IRIS datastream
     print '  Adding IRIS datastream ... '
     resp = conn.post '/fedora/objects/'+pid+'/datastreams/IRIS?format=xml&dsLabel=IRIS&mimeType=text/xml&controlGroup=X', iris do |req|
@@ -697,10 +709,39 @@ pid = 'york:8367349'
       req.headers['charset']      = 'utf-8'
     end
     puts 'done.'
+=end
 
     print '  Adding thumbnails ... '
+    irisdoc = Nokogiri::XML(iris)
+    filetype = irisdoc.at_xpath('/iris:iris/iris:instrument/iris:type').text
+    thumbnail = thumbnail_url(filetype.strip)
+
+    resp = conn.post '/fedora/objects/'+pid+'/datastreams/'+@thumbnail_ds_id+'?dsLabel='+@thumbnail_ds_label+'&mimeType=image/png&controlGroup=E&dsLocation='+thumbnail do |req|
+      req.headers['Content-Type'] = ''
+      req.headers['charset']      = 'utf-8'
+    end
 
     puts 'done.'
+  end
+
+  def thumbnail_url(filetype)
+    url = ''
+    @default_iris_url       = @props['iris.instruments.url']
+
+    if filetype=='Sound'
+      url = @default_iris_url +  @sound_thumbnail
+    elsif filetype=='Video'
+      url = @default_iris_url +  @video_thumbnail
+    elsif filetype=='Text'
+      url = @default_iris_url +  @text_thumbnail
+    elsif filetype=='StillImage'
+      url = @default_iris_url +  @image_thumbnail
+    elsif filetype=='Software'
+      url = @default_iris_url +  @software_thumbnail
+    else
+      url = @default_iris_url +  @multi_thumbnail
+    end
+    url
   end
 
   def send_via_gmail(user,pass,_to,_subject,_body,attach_file_name)
