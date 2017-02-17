@@ -7,12 +7,7 @@ require 'nokogiri-pretty'
 require 'colorize'
 require 'gmail'
 
-# NB: This script expects that there are ONLY SPECIAL COLLECTION texts in the notes field.
-#     If there are any additional texts, e.g. author entered original notes text, and then IRIS admins entered special collection text,
-#     manual checks are needed as the patterns of the text in the notes fields are hard to identify.
-
 class BatchUpdater
-  # @namespaces = { 'iris'   => 'http://iris-database.org/iris'}
 
   def initialize()
     @IRIS_NS         = 'http://iris-database.org/iris'
@@ -39,6 +34,10 @@ class BatchUpdater
 
     @xslt                   = @props['iris_to_dc_xslt']
     @iris_parent_collection = @props['iris_collection']
+
+    @object_label           = @props['object_label']
+    @object_ownerid         = @props['object_ownerid']
+    @object_namespace       = @props['object_namespace']
 
     @props2    = PropertiesManager.new("excel_settings.yaml").getPropertiesHash()
     @sheetname= @props2['sheetname']
@@ -88,6 +87,7 @@ class BatchUpdater
     @dd_languages_doc = Nokogiri::XML(File.open(@dd_languages_file))
 
     puts ' done.'
+
   end
 
   def is_author_in_dd(author)
@@ -100,7 +100,7 @@ class BatchUpdater
   end
 
   def update()
-    conn = Faraday.new(:url => @protocol + "://" + @host) do |c|
+    conn = Faraday.new(:url => @protocol + '://' + @host) do |c|
       c.use Faraday::Request::UrlEncoded
       #c.use Faraday::Response::Logger
       c.use Faraday::Adapter::NetHttp
@@ -112,12 +112,9 @@ class BatchUpdater
       puts 'Analyzing ' + filename + ' ... '
       iris_metadata = excel_to_iris_xmls(@path + filename)
       iris_metadata.each do |iris|
-        dc = iris_to_dc(iris)
-        #puts '--------------------------'
-        #puts dc
+        ingest(conn, iris)
+        break
       end
-      puts rels_int('york:3')
-      puts rels_ext('york:3')
     end
 
     #send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,@gmail_default_subject,"BODYYYYYYYYYY",nil)
@@ -651,8 +648,59 @@ class BatchUpdater
     builder.to_xml
   end
 
-  def ingest(iris)
+  def ingest(conn, iris)
+    puts 'Transferring data to IRIS object ... '
+=begin
+    # Create empty object
+    print 'Creating empty object ... '
+    resp = conn.post '/fedora/objects/new?label='+@object_label+'&namespace='+@object_namespace+'&ownerId=' + @object_ownerid do |req|
+      req.headers['Content-Type'] = ''      # the default Content Type set by Faraday is NOT accepted by Fedora server, so reset it to blank
+      req.headers['charset']      = 'utf-8'
+    end
+    pid = resp.body.to_s
+    puts pid
+=end
+pid = 'york:8367349'
 
+    # ingest IRIS datastream
+    print '  Adding IRIS datastream ... '
+    resp = conn.post '/fedora/objects/'+pid+'/datastreams/IRIS?format=xml&dsLabel=IRIS&mimeType=text/xml&controlGroup=X', iris do |req|
+      req.headers['Content-Type'] = ''      # the default Content Type set by Faraday is NOT accepted by Fedora server, so reset it to blank
+      req.headers['charset']      = 'utf-8'
+    end
+    puts 'done.'
+
+
+    # update DC
+    print '  Updating DC datastream ... '
+    dc = iris_to_dc(iris)
+    resp = conn.put '/fedora/objects/'+pid+'/datastreams/DC?format=xml&dsLabel=Dublin%20Core%20Metadata%20(DC)&mimeType=text/xml&controlGroup=X', dc do |req|
+      req.headers['Content-Type'] = ''
+      req.headers['charset']      = 'utf-8'
+    end
+    puts 'done.'
+
+    # ingest RELS_INT
+    print '  Adding RELS-INT datastream ... '
+    relsint = rels_int(pid)
+    resp = conn.post '/fedora/objects/'+pid+'/datastreams/RELS-INT?format=xml&dsLabel=Relationship%20Assertion%20Metadata%20(RELS-INT)&mimeType=text/xml&controlGroup=X', relsint do |req|
+      req.headers['Content-Type'] = ''
+      req.headers['charset']      = 'utf-8'
+    end
+    puts 'done.'
+
+    # ingest RELS_EXT
+    print '  Adding RELS-EXT datastream ... '
+    relsext = rels_ext(pid)
+    resp = conn.post '/fedora/objects/'+pid+'/datastreams/RELS-EXT?format=xml&dsLabel=Fedora%20Object-to-Object%20Relationship%20Metadata%20(RELS-EXT)&mimeType=text/xml&controlGroup=X', relsext do |req|
+      req.headers['Content-Type'] = ''
+      req.headers['charset']      = 'utf-8'
+    end
+    puts 'done.'
+
+    print '  Adding thumbnails ... '
+
+    puts 'done.'
   end
 
   def send_via_gmail(user,pass,_to,_subject,_body,attach_file_name)
