@@ -120,16 +120,24 @@ class BatchUpdater
     end
     conn.basic_auth(@admin, @password)
 
-    Dir.foreach(@path) do |filename|
-      next if filename == '.' or filename == '..'
-      @LOG.debug('Analyzing ' + filename + ' ... ')
-      iris_metadata = excel_to_iris_xmls(@path + filename)
-      iris_metadata.each do |iris|
-        ingest(conn, iris)
-        break
+    if Dir[@path+'*'].empty?
+      @LOG.debug('Folder ' + @path + ' is EMPTY!')
+    else
+      Dir.foreach(@path) do |filename|
+        next if filename == '.' or filename == '..'
+        if !filename.end_with?('xls') and !filename.end_with?('xlsm')
+            @LOG.debug('Ignore file: ' + filename)
+            next
+        end
+        @LOG.debug('Analyzing ' + filename + ' ... ')
+        iris_metadata = excel_to_iris_xmls(@path + filename)
+        iris_metadata.each do |iris|
+          ingest(conn, iris)
+        end
+        @LOG.debug('Moving file ' + filename + ' to ' + @processed_path)
+        FileUtils.mv(@path + filename, @processed_path + filename)
       end
     end
-
   end
 
   def excel_to_iris_xmls(excel_file_name)
