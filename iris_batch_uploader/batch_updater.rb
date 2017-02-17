@@ -139,7 +139,8 @@ class BatchUpdater
           end
         end
         @LOG.debug('Moving file ' + filename + ' to ' + @processed_path)
-        FileUtils.mv(@path + filename, @processed_path + filename)
+        today = Time.now.strftime("%Y%m%d")
+        FileUtils.mv(@path + filename, @processed_path + today + '_' + filename)
       end
     end
   end
