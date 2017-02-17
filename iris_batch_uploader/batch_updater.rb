@@ -16,14 +16,19 @@ class BatchUpdater
     @FEDORA_MODEL_NS = 'info:fedora/fedora-system:def/model#'
     @REL_NS          = 'info:fedora/fedora-system:def/relations-external#'
 
-    print 'loading system properties ... '
     @props    = PropertiesManager.new("system.yaml").getPropertiesHash()
+    @logfile  = @props['logfile']
+    @LOG      = Logger.new(@logfile, 'monthly')
+    @LOG.debug('loading system properties ... ')
+
     @protocol = @props['protocol']
     @host     = @props['host']
     @irishost = @props['irishost']
     @admin    = @props['admin']
     @password = @props['password']
     @path     = @props['path']
+    @processed_path = @props['path_processed']
+
     @dd_commons_file = @props['dd_commons']
     @dd_authors_file = @props['dd_authors']
     @dd_languages_file = @props['dd_languages']
@@ -91,15 +96,11 @@ class BatchUpdater
     @column_publication1_page_number_to   = @props2['column_publication1_page_number_to'].to_i
     @column_publication1_doi              = @props2['column_publication1_doi'].to_i
     @column_email                         = @props2['column_email'].to_i
-    puts ' done.'
 
-    print 'loading data dictionaries ... '
+    @LOG.debug('loading data dictionaries ... ')
     @dd_commons_doc   = Nokogiri::XML(File.open(@dd_commons_file))
     @dd_authors_doc   = Nokogiri::XML(File.open(@dd_authors_file))
     @dd_languages_doc = Nokogiri::XML(File.open(@dd_languages_file))
-
-    puts ' done.'
-
   end
 
   def is_author_in_dd(author)
@@ -121,7 +122,7 @@ class BatchUpdater
 
     Dir.foreach(@path) do |filename|
       next if filename == '.' or filename == '..'
-      puts 'Analyzing ' + filename + ' ... '
+      @LOG.debug('Analyzing ' + filename + ' ... ')
       iris_metadata = excel_to_iris_xmls(@path + filename)
       iris_metadata.each do |iris|
         ingest(conn, iris)
@@ -619,7 +620,7 @@ class BatchUpdater
 
         end
       else
-        puts 'Seems no data in ' + sheet_name
+        @LOG.warn('Seems no data in ' + sheet_name)
       end
     end
 
@@ -660,56 +661,49 @@ class BatchUpdater
   end
 
   def ingest(conn, iris)
-    puts 'Transferring data to IRIS object ... '
+    @LOG.debug('Transferring data to IRIS object ... ')
 
     # Create empty object
-    print '  Creating empty object ... '
+    @LOG.debug('  Creating empty object ... ')
     resp = conn.post '/fedora/objects/new?label='+@object_label+'&namespace='+@object_namespace+'&ownerId=' + @object_ownerid do |req|
       req.headers['Content-Type'] = ''      # the default Content Type set by Faraday is NOT accepted by Fedora server, so reset it to blank
       req.headers['charset']      = 'utf-8'
     end
     pid = resp.body.to_s
-    puts pid
-
-#pid = 'york:8367349'
+    @LOG.debug('  Created: ' + pid)
 
     # ingest IRIS datastream
-    print '  Adding IRIS datastream ... '
+    @LOG.debug('  Adding IRIS datastream ... ')
     resp = conn.post '/fedora/objects/'+pid+'/datastreams/IRIS?format=xml&dsLabel=IRIS&mimeType=text/xml&controlGroup=X', iris do |req|
       req.headers['Content-Type'] = ''      # the default Content Type set by Faraday is NOT accepted by Fedora server, so reset it to blank
       req.headers['charset']      = 'utf-8'
     end
-    puts 'done.'
-
 
     # update DC
-    print '  Updating DC datastream ... '
+    @LOG.debug('  Updating DC datastream ... ')
     dc = iris_to_dc(iris)
     resp = conn.put '/fedora/objects/'+pid+'/datastreams/DC?format=xml&dsLabel=Dublin%20Core%20Metadata%20(DC)&mimeType=text/xml&controlGroup=X', dc do |req|
       req.headers['Content-Type'] = ''
       req.headers['charset']      = 'utf-8'
     end
-    puts 'done.'
 
     # ingest RELS_INT
-    print '  Adding RELS-INT datastream ... '
+    @LOG.debug('  Adding RELS-INT datastream ... ')
     relsint = rels_int(pid)
     resp = conn.post '/fedora/objects/'+pid+'/datastreams/RELS-INT?format=xml&dsLabel=Relationship%20Assertion%20Metadata%20(RELS-INT)&mimeType=text/xml&controlGroup=X', relsint do |req|
       req.headers['Content-Type'] = ''
       req.headers['charset']      = 'utf-8'
     end
-    puts 'done.'
 
     # ingest RELS_EXT
-    print '  Adding RELS-EXT datastream ... '
+    @LOG.debug('  Adding RELS-EXT datastream ... ')
     relsext = rels_ext(pid)
     resp = conn.post '/fedora/objects/'+pid+'/datastreams/RELS-EXT?format=xml&dsLabel=Fedora%20Object-to-Object%20Relationship%20Metadata%20(RELS-EXT)&mimeType=text/xml&controlGroup=X', relsext do |req|
       req.headers['Content-Type'] = ''
       req.headers['charset']      = 'utf-8'
     end
-    puts 'done.'
 
-    print '  Adding thumbnails ... '
+    @LOG.debug('  Adding thumbnails ... ')
     irisdoc = Nokogiri::XML(iris)
     filetype = irisdoc.at_xpath('/iris:iris/iris:instrument/iris:type').text
     thumbnail = thumbnail_url(filetype.strip)
@@ -719,12 +713,8 @@ class BatchUpdater
       req.headers['charset']      = 'utf-8'
     end
 
-    puts 'done.'
-
-    print '  Sending notification email ... '
+    @LOG.debug('  Sending notification email ... ')
     send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,'Your instrument has been created from Excel spreadsheet',"http://"+@irishost+'/iris/app/home/detail?id='+pid,nil)
-    puts 'done.'
-
   end
 
   def thumbnail_url(filetype)
