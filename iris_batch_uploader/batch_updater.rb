@@ -20,6 +20,7 @@ class BatchUpdater
     @props    = PropertiesManager.new("system.yaml").getPropertiesHash()
     @protocol = @props['protocol']
     @host     = @props['host']
+    @irishost = @props['irishost']
     @admin    = @props['admin']
     @password = @props['password']
     @path     = @props['path']
@@ -128,7 +129,6 @@ class BatchUpdater
       end
     end
 
-    #send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,@gmail_default_subject,"BODYYYYYYYYYY",nil)
   end
 
   def excel_to_iris_xmls(excel_file_name)
@@ -445,7 +445,7 @@ class BatchUpdater
                     xpath = "/IRIS_Data_Dict/relatedItems/publicationTypes/type[@label='"+publication1_type.strip+"']/@value"
                     v = dd_value_from_xpath(xpath)
                     xml['iris'].publicationType() {
-                      xml.text(publication1_type.strip)
+                      xml.text(v)
                     }
                   end
 
@@ -661,19 +661,18 @@ class BatchUpdater
 
   def ingest(conn, iris)
     puts 'Transferring data to IRIS object ... '
-=begin
+
     # Create empty object
-    print 'Creating empty object ... '
+    print '  Creating empty object ... '
     resp = conn.post '/fedora/objects/new?label='+@object_label+'&namespace='+@object_namespace+'&ownerId=' + @object_ownerid do |req|
       req.headers['Content-Type'] = ''      # the default Content Type set by Faraday is NOT accepted by Fedora server, so reset it to blank
       req.headers['charset']      = 'utf-8'
     end
     pid = resp.body.to_s
     puts pid
-=end
-pid = 'york:8367349'
 
-=begin
+#pid = 'york:8367349'
+
     # ingest IRIS datastream
     print '  Adding IRIS datastream ... '
     resp = conn.post '/fedora/objects/'+pid+'/datastreams/IRIS?format=xml&dsLabel=IRIS&mimeType=text/xml&controlGroup=X', iris do |req|
@@ -709,7 +708,6 @@ pid = 'york:8367349'
       req.headers['charset']      = 'utf-8'
     end
     puts 'done.'
-=end
 
     print '  Adding thumbnails ... '
     irisdoc = Nokogiri::XML(iris)
@@ -722,6 +720,11 @@ pid = 'york:8367349'
     end
 
     puts 'done.'
+
+    print '  Sending notification email ... '
+    send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,'Your instrument has been created from Excel spreadsheet',"http://"+@irishost+'/iris/app/home/detail?id='+pid,nil)
+    puts 'done.'
+
   end
 
   def thumbnail_url(filetype)
