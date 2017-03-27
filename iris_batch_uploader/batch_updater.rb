@@ -78,8 +78,15 @@ class BatchUpdater
     @column_notes                         = @props2['column_notes'].to_i
     @column_participanttype1              = @props2['column_participanttype1'].to_i
     @column_participanttype2              = @props2['column_participanttype2'].to_i
+
     @column_language1                     = @props2['column_language1'].to_i
+    @column_language1_2                   = @props2['column_language1_2'].to_i
+    @column_language1_3                   = @props2['column_language1_3'].to_i
+
     @column_language2                     = @props2['column_language2'].to_i
+    @column_language2_2                   = @props2['column_language2_2'].to_i
+    @column_language2_3                   = @props2['column_language2_3'].to_i
+
     @column_publication1_type             = @props2['column_publication1_type'].to_i
     @column_publication1_author1          = @props2['column_publication1_author1'].to_i
     @column_publication1_author2          = @props2['column_publication1_author2'].to_i
@@ -184,7 +191,11 @@ class BatchUpdater
           participanttype1              = sheet.cell(row, @column_participanttype1)
           participanttype2              = sheet.cell(row, @column_participanttype2)
           language1                     = sheet.cell(row, @column_language1)
+          language1_2                   = sheet.cell(row, @column_language1_2)
+          language1_3                   = sheet.cell(row, @column_language1_3)
           language2                     = sheet.cell(row, @column_language2)
+          language2_2                   = sheet.cell(row, @column_language2_2)
+          language2_3                   = sheet.cell(row, @column_language2_3)
           publication1_type             = sheet.cell(row, @column_publication1_type)
           publication1_author1          = sheet.cell(row, @column_publication1_author1)
           publication1_author2          = sheet.cell(row, @column_publication1_author2)
@@ -442,11 +453,31 @@ class BatchUpdater
                     xml.text(language1.strip)
                   }
                 end
+                if !language1_2.nil? and language1_2.strip!=''
+                  xml['iris'].firstLanguage() {
+                    xml.text(language1_2.strip)
+                  }
+                end
+                if !language1_3.nil? and language1_3.strip!=''
+                  xml['iris'].firstLanguage() {
+                    xml.text(language1_3.strip)
+                  }
+                end
 
                 # processing l2
                 if !language2.nil? and language2.strip!=''
                   xml['iris'].targetLanguage() {
                     xml.text(language2.strip)
+                  }
+                end
+                if !language2_2.nil? and language2_2.strip!=''
+                  xml['iris'].targetLanguage() {
+                    xml.text(language2_2.strip)
+                  }
+                end
+                if !language2_3.nil? and language2_3.strip!=''
+                  xml['iris'].targetLanguage() {
+                    xml.text(language2_3.strip)
                   }
                 end
               }
