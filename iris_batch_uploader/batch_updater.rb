@@ -139,16 +139,21 @@ class BatchUpdater
         @LOG.debug('Analyzing ' + filename + ' ... ')
         iris_metadata = excel_to_iris_xmls(@path + filename)
         iris_metadata.each do |iris|
+          puts '*****************************'
+          puts '*****************************'
+          puts iris
+=begin
           begin
             ingest(conn, iris)
           rescue Exception => e
             @LOG.error(e.message)
             @LOG.error(iris)
           end
+=end
         end
         @LOG.debug('Moving file ' + filename + ' to ' + @processed_path)
         today = Time.now.strftime("%Y%m%d")
-        FileUtils.mv(@path + filename, @processed_path + today + '_' + filename)
+#        FileUtils.mv(@path + filename, @processed_path + today + '_' + filename)
       end
     end
   end
@@ -230,7 +235,7 @@ class BatchUpdater
                   xml['iris'].lastName  author1.split(',')[0].strip
                   xml['iris'].firstName author1.split(',')[1].strip
                 }
-                if !author2.nil?
+                if !author2.nil? and author2!=''
                   type = 'new'
                   if is_author_in_dd(author2.strip)
                     type = 'auto'
@@ -241,7 +246,7 @@ class BatchUpdater
                     xml['iris'].firstName author2.split(',')[1].strip
                   }
                 end
-                if !author3.nil?
+                if !author3.nil? and author3!=''
                   type = 'new'
                   if is_author_in_dd(author3.strip)
                     type = 'auto'
@@ -252,7 +257,7 @@ class BatchUpdater
                     xml['iris'].firstName author3.split(',')[1].strip
                   }
                 end
-                if !author4.nil?
+                if !author4.nil? and author4!=''
                   type = 'new'
                   if is_author_in_dd(author4.strip)
                     type = 'auto'
@@ -263,7 +268,7 @@ class BatchUpdater
                     xml['iris'].firstName author4.split(',')[1].strip
                   }
                 end
-                if !author5.nil?
+                if !author5.nil? and author5!=''
                   type = 'new'
                   if is_author_in_dd(author5.strip)
                     type = 'auto'
@@ -274,7 +279,7 @@ class BatchUpdater
                     xml['iris'].firstName author5.split(',')[1].strip
                   }
                 end
-                if !author6.nil?
+                if !author6.nil? and author6!=''
                   type = 'new'
                   if is_author_in_dd(author6.strip)
                     type = 'auto'
