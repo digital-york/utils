@@ -139,21 +139,16 @@ class BatchUpdater
         @LOG.debug('Analyzing ' + filename + ' ... ')
         iris_metadata = excel_to_iris_xmls(@path + filename)
         iris_metadata.each do |iris|
-          puts '*****************************'
-          puts '*****************************'
-          puts iris
-=begin
           begin
             ingest(conn, iris)
           rescue Exception => e
             @LOG.error(e.message)
             @LOG.error(iris)
           end
-=end
         end
         @LOG.debug('Moving file ' + filename + ' to ' + @processed_path)
         today = Time.now.strftime("%Y%m%d")
-#        FileUtils.mv(@path + filename, @processed_path + today + '_' + filename)
+        FileUtils.mv(@path + filename, @processed_path + today + '_' + filename)
       end
     end
   end
