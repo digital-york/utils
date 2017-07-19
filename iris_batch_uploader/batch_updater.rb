@@ -356,12 +356,12 @@ class BatchUpdater
                 # Processing type of file
                 # processing research areas
                 if !typeoffile1.nil?
-                   xpath = "/IRIS_Data_Dict/instrument/types/type[@label='"+typeoffile1.strip+"']/@value"
+                   xpath = "/IRIS_Data_Dict/instrument/types/type[@value='"+typeoffile1.strip+"']/@value"
                    v = dd_value_from_xpath(xpath)
 
                    typeoffile = typeoffile1.strip
                    if !typeoffile2.nil?
-                     xpath = "/IRIS_Data_Dict/instrument/types/type[@label='"+typeoffile2.strip+"']/@value"
+                     xpath = "/IRIS_Data_Dict/instrument/types/type[@value='"+typeoffile2.strip+"']/@value"
                      v2 = dd_value_from_xpath(xpath)
                      v = v.to_s + ' ' + v2.to_s.strip
                    end
@@ -616,8 +616,12 @@ class BatchUpdater
 
                   # processing page no from
                   if !publication1_page_number_from.nil?
-                    xml['iris'].pageFrom() {
+                    xml['iris'].pageFrom(:notknown=>"false") {
                       xml.text(publication1_page_number_from)
+                    }
+				  else
+				    xml['iris'].pageFrom(:notknown=>"true") {
+                      xml.text("")
                     }
                   end
 
@@ -759,7 +763,7 @@ class BatchUpdater
     end
 
     @LOG.debug('  Sending notification email ... ')
-    send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,'Your instrument has been created from Excel spreadsheet',"http://"+@irishost+'/iris/app/home/detail?id='+pid,nil)
+#    send_via_gmail(@gmail_user,@gmail_pass,@gmail_to,'Your instrument has been created from Excel spreadsheet',"http://"+@irishost+'/iris/app/home/detail?id='+pid,nil)
   end
 
   def thumbnail_url(filetype)
@@ -782,18 +786,18 @@ class BatchUpdater
     url
   end
 
-  def send_via_gmail(user,pass,_to,_subject,_body,attach_file_name)
-    gmail = Gmail.connect(user, pass)
-    email = gmail.compose do
-      to _to
-      subject _subject
-      body _body
-      if !attach_file_name.nil?
-        add_file attach_file_name
-      end
-    end
-    email.deliver!
-  end
+#  def send_via_gmail(user,pass,_to,_subject,_body,attach_file_name)
+#    gmail = Gmail.connect(user, pass)
+#    email = gmail.compose do
+#      to _to
+#      subject _subject
+#      body _body
+#      if !attach_file_name.nil?
+#        add_file attach_file_name
+#      end
+#    end
+#    email.deliver!
+#  end
 end
 
 bu = BatchUpdater.new()
