@@ -76,6 +76,14 @@ class UpdateNotes
           req.headers['Content-Type'] = 'text/xml'
         end
         puts 'done.'
+
+        print '     Updating DC ... '.colorize(:color => :green)
+        xsl = Nokogiri::XSLT(File.read("iris2dc.xsl"))
+        dc  = xsl.apply_to(iris_doc)
+        resp = conn.put '/fedora/objects/'+pid+'/datastreams/DC', dc do |req|
+          req.headers['Content-Type'] = 'text/xml'
+        end
+        puts 'done.'
       end
     end
   end
