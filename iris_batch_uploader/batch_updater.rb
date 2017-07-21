@@ -227,8 +227,8 @@ class BatchUpdater
                 end
                 xml['iris'].creator(:type => type) {
                   xml['iris'].fullName  author1.strip
-                  xml['iris'].lastName  author1.split(',')[0].strip
                   xml['iris'].firstName author1.split(',')[1].strip
+                  xml['iris'].lastName  author1.split(',')[0].strip
                 }
                 if !author2.nil? and author2!=''
                   type = 'new'
@@ -237,8 +237,8 @@ class BatchUpdater
                   end
                   xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author2.strip
-                    xml['iris'].lastName  author2.split(',')[0].strip
                     xml['iris'].firstName author2.split(',')[1].strip
+                    xml['iris'].lastName  author2.split(',')[0].strip
                   }
                 end
                 if !author3.nil? and author3!=''
@@ -248,8 +248,8 @@ class BatchUpdater
                   end
                   xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author3.strip
-                    xml['iris'].lastName  author3.split(',')[0].strip
                     xml['iris'].firstName author3.split(',')[1].strip
+                    xml['iris'].lastName  author3.split(',')[0].strip
                   }
                 end
                 if !author4.nil? and author4!=''
@@ -259,8 +259,8 @@ class BatchUpdater
                   end
                   xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author4.strip
-                    xml['iris'].lastName  author4.split(',')[0].strip
                     xml['iris'].firstName author4.split(',')[1].strip
+                    xml['iris'].lastName  author4.split(',')[0].strip
                   }
                 end
                 if !author5.nil? and author5!=''
@@ -270,8 +270,8 @@ class BatchUpdater
                   end
                   xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author5.strip
-                    xml['iris'].lastName  author5.split(',')[0].strip
                     xml['iris'].firstName author5.split(',')[1].strip
+                    xml['iris'].lastName  author5.split(',')[0].strip
                   }
                 end
                 if !author6.nil? and author6!=''
@@ -281,8 +281,8 @@ class BatchUpdater
                   end
                   xml['iris'].creator(:type => type) {
                     xml['iris'].fullName  author6.strip
-                    xml['iris'].lastName  author6.split(',')[0].strip
                     xml['iris'].firstName author6.split(',')[1].strip
+                    xml['iris'].lastName  author6.split(',')[0].strip
                   }
                 end
 
@@ -502,8 +502,8 @@ class BatchUpdater
                   end
                   xml['iris'].author(:type => type) {
                     xml['iris'].fullName  publication1_author1.strip
-                    xml['iris'].lastName  publication1_author1.split(',')[0].strip
                     xml['iris'].firstName publication1_author1.split(',')[1].strip
+                    xml['iris'].lastName  publication1_author1.split(',')[0].strip
                   }
                   if !publication1_author2.nil? and publication1_author2.to_s.strip!='' and publication1_author2.to_s.strip!='0'
                     type = 'new'
@@ -512,8 +512,8 @@ class BatchUpdater
                     end
                     xml['iris'].author(:type => type) {
                       xml['iris'].fullName  publication1_author2.strip
-                      xml['iris'].lastName  publication1_author2.split(',')[0].strip
                       xml['iris'].firstName publication1_author2.split(',')[1].strip
+                      xml['iris'].lastName  publication1_author2.split(',')[0].strip
                     }
                   end
                   if !publication1_author3.nil?  and publication1_author3.to_s.strip!='' and publication1_author3.to_s.strip!='0'
@@ -523,8 +523,8 @@ class BatchUpdater
                     end
                     xml['iris'].author(:type => type) {
                       xml['iris'].fullName  publication1_author3.strip
-                      xml['iris'].lastName  publication1_author3.split(',')[0].strip
                       xml['iris'].firstName publication1_author3.split(',')[1].strip
+                      xml['iris'].lastName  publication1_author3.split(',')[0].strip
                     }
                   end
 
@@ -535,8 +535,8 @@ class BatchUpdater
                     end
                     xml['iris'].author(:type => type) {
                       xml['iris'].fullName  publication1_author4.strip
-                      xml['iris'].lastName  publication1_author4.split(',')[0].strip
                       xml['iris'].firstName publication1_author4.split(',')[1].strip
+                      xml['iris'].lastName  publication1_author4.split(',')[0].strip
                     }
                   end
 
@@ -547,8 +547,8 @@ class BatchUpdater
                     end
                     xml['iris'].author(:type => type) {
                       xml['iris'].fullName  publication1_author5.strip
-                      xml['iris'].lastName  publication1_author5.split(',')[0].strip
                       xml['iris'].firstName publication1_author5.split(',')[1].strip
+                      xml['iris'].lastName  publication1_author5.split(',')[0].strip
                     }
                   end
 
@@ -559,8 +559,8 @@ class BatchUpdater
                     end
                     xml['iris'].author(:type => type) {
                       xml['iris'].fullName  publication1_author6.strip
-                      xml['iris'].lastName  publication1_author6.split(',')[0].strip
                       xml['iris'].firstName publication1_author6.split(',')[1].strip
+                      xml['iris'].lastName  publication1_author6.split(',')[0].strip
                     }
                   end
 
