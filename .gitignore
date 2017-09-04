@@ -17,3 +17,6 @@ iris_batch_uploader/system.yaml
 .idea
 
 addnotknownattr/system.yaml
+
+updatedctitle/system.yaml
+updatedctitle/pids.properties
