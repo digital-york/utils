@@ -9,8 +9,7 @@ class UpdateDcTitle
 #                  'oaidc'  => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
 #                  'vra'     => 'http://dlib.york.ac.uk/vra4york'
 #  }
-
-  @namespaces = { 'vra'   => 'http://dlib.york.ac.uk/vra4york'}
+#  @namespaces = { 'vra'   => 'http://dlib.york.ac.uk/vra4york'}
 
   def initialize()
     @current_heading = 'Linstrum, Derek'
@@ -46,18 +45,11 @@ class UpdateDcTitle
     #puts solr_doc.to_xml
 
     objects  = solr_doc.xpath("/response/result/doc")
-
-#i=0
-
     for object in objects
       pid = object.xpath("str[@name='PID']")
       iscollection=object.xpath("arr[@name='rdf.rel.isCollection']/str")
       if "true"== iscollection.text
         addpid(pid.text)
-#if i>1
-#  return
-#end
-#i+=1
       else
         @pids.push pid.text
       end
@@ -82,20 +74,12 @@ class UpdateDcTitle
 	    dccontributor = solr_doc.xpath("/response/result/doc[str[@name='PID']='"+originalpid+"']/arr[@name='dc.contributor']")
       if !dccontributor.nil? and dccontributor==@current_heading
         needtochange = false
-      # else
-      #   if dccontributor.nil?
-      #     puts 'Cannot find dc:contributor'
-      #   else
-      #     puts 'Old contributor: ' + dccontributor.text
-      #   end
       end
 	  
       if needtochange == true
         updated+=1
-        #if updated<2
-          update_dc_contributor(originalpid)
-          update_vra(originalpid)
-        #end
+        update_dc_contributor(originalpid)
+        update_vra(originalpid)
       else
         notupdated+=1
 	      puts '  no need to update'
@@ -119,7 +103,6 @@ class UpdateDcTitle
       dc_contributor.content = @current_heading
       changed = true
     elsif dc_contributor_element.text.start_with? @current_heading
-      # puts 'updated'
       dc_contributor_element.content = @current_heading
       changed = true
     else
@@ -128,7 +111,6 @@ class UpdateDcTitle
     end
 
     if changed
-      #puts dc_doc
       resp = @conn.put '/fedora/objects/'+pid+'/datastreams/DC', dc_doc.to_s do |req|
         req.headers['Content-Type'] = 'text/xml'
       end
@@ -174,7 +156,6 @@ class UpdateDcTitle
     end
 
     if changed
-      # puts vra_doc.to_xml
       resp = @conn.put '/fedora/objects/'+pid+'/datastreams/VRA', vra_doc.to_s do |req|
         req.headers['Content-Type'] = 'text/xml'
       end
