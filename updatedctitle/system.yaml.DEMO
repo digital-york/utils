@@ -2,3 +2,4 @@ protocol=https
 host=HOST
 admin=ADMIN_USER_NAME
 password=ADMIN_PASSWORD
+solrquery=/solr/select/?q__EQUAL__rdf.rel.isMemberOf:%22__PID__%22&rows__EQUAL__2147483647
