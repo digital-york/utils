@@ -5,15 +5,16 @@ require "nokogiri"
 require 'nokogiri-pretty'
 
 class UpdateDcTitle
-#  @namespaces = { 'dc'     => 'http://purl.org/dc/elements/1.1/',
-#                  'oaidc'  => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
-#                  'vra'     => 'http://dlib.york.ac.uk/vra4york'
-#  }
+  # @namespaces = { 'dc'     => 'http://purl.org/dc/elements/1.1/',
+  #                 'oaidc'  => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
+  #                 'vra'     => 'http://dlib.york.ac.uk/vra4york'
+  # }
 #  @namespaces = { 'vra'   => 'http://dlib.york.ac.uk/vra4york'}
 
   def initialize()
     @current_heading = 'Linstrum, Derek'
     @collection       = 'york:815234'
+    #@collection       = 'york:815244'
 
     puts 'loading system properties ...'
     @props    = PropertiesManager.new("system.yaml").getPropertiesHash()
@@ -96,17 +97,18 @@ class UpdateDcTitle
     puts '  updating DC'
     dc = @conn.get '/fedora/objects/'+pid+'/datastreams/DC/content'
     dc_doc = Nokogiri::XML(dc.body.to_s)
-    dc_contributor_element = dc_doc.at_xpath("/oai_dc:dc/dc:contributor")
+    dc_contributor_element = dc_doc.at_xpath("//dc:contributor", 'dc'=> 'http://purl.org/dc/elements/1.1/')
     if dc_contributor_element.nil? or dc_contributor_element.text==''
-      puts 'Adding a new dc:contributor.'
+      puts '    adding a new dc:contributor.'
       dc_contributor = Nokogiri::XML::Node.new "dc:contributor", dc_doc
       dc_contributor.content = @current_heading
       changed = true
     elsif dc_contributor_element.text.start_with? @current_heading
+      puts '    updating existing dc:contributor.'
       dc_contributor_element.content = @current_heading
       changed = true
     else
-      puts 'Bypass ' + dc_contributor_element.text
+      puts '    bypass ' + dc_contributor_element.text
       changed = false
     end
 
@@ -130,7 +132,7 @@ class UpdateDcTitle
 
     vra_photographer_element = vra_doc.xpath("/vra:vra/vra:image/vra:agentSet/vra:agent[vra:role='photographer']/vra:name[@type='personal']", 'vra'   => 'http://dlib.york.ac.uk/vra4york')
     if vra_photographer_element.nil? or vra_photographer_element.text==''
-      puts 'Adding a new vra:agent.'
+      puts '    adding a new vra:agent.'
       vra_agent = Nokogiri::XML::Node.new "vra:agent", vra_doc
       vra_agentset_element << vra_agent
 
@@ -148,6 +150,7 @@ class UpdateDcTitle
 
       changed = true
     elsif vra_photographer_element.text.start_with? @current_heading
+      puts '    updating existing VRA.'
       vra_photographer_element.first.content = @current_heading
       changed = true
     else
