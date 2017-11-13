@@ -74,7 +74,7 @@ class IrisDump
           for ds in dss
             dsid   = ds['dsid']
             dsmime = ds['mimeType']
-            dsurl  = 'http://www.iris-database.org/iris/api/resource/' + pid + '/asset/' + dsid + "?download=true"
+            dsurl  = 'https://www.iris-database.org/iris/api/resource/' + pid + '/asset/' + dsid + "?download=true"
             filenode = Nokogiri::XML::Node.new('file',record)
             filenode['id']   = dsid
             filenode['mime'] = dsmime
