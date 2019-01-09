@@ -20,3 +20,6 @@ addnotknownattr/system.yaml
 
 updatedctitle/system.yaml
 updatedctitle/pids.properties
+
+iris_statistics_check/system.yaml
+iris_statistics_check/pids.properties
