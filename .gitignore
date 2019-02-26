@@ -23,3 +23,6 @@ updatedctitle/pids.properties
 
 iris_statistics_check/system.yaml
 iris_statistics_check/pids.properties
+
+iris_reports/system.yaml
+iris_reports/pids.properties
