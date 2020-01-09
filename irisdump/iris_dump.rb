@@ -23,14 +23,37 @@ class IrisDump
     @generatedfiles = Array.new
 
     puts 'loading pid list ...'
-    @pids = []
-    f = File.open("pids.properties") or die "Unable to open file..."
-    f.each_line {|line|
-      if(line.include? 'york')
-        @pids.push line.gsub("\n",'')
-      end
+    @pids = load_pids()
+  end
+
+  # Use Fedora RI search to get IRIS pid list
+  def load_pids()
+    pids = []
+
+    conn = Faraday.new(:url => @protocol + "://" + @host) do |c|
+      c.use Faraday::Request::UrlEncoded
+      c.use Faraday::Adapter::NetHttp
+    end
+    conn.basic_auth(@admin, @password)
+
+    ri_url = "/fedora/risearch"
+    ri_query = "
+      select $s
+      from <#ri>
+      where
+      ($s <info:fedora/fedora-system:def/model#hasModel> <info:fedora/york:CModel-Iris>)
+    "
+    riresults = conn.post ri_url, {'lang' => 'itql',
+                                   'format' => 'Sparql',
+                                   'query' => ri_query
     }
-    f.close()
+
+    ri_results_doc = Nokogiri::XML(riresults.body.to_s)
+    pids_elements  = ri_results_doc.xpath('/sp:sparql/sp:results/sp:result/sp:s/@uri', 'sp' => 'http://www.w3.org/2001/sw/DataAccess/rf1/result')
+    for pe in pids_elements
+      pids << (pe.text.sub! 'info:fedora/','')
+    end
+    pids
   end
 
   def dump()
