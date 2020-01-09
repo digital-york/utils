@@ -80,21 +80,6 @@ class IrisDump
             filenode['mime'] = dsmime
             filenode['url']  = dsurl
             filesnode << filenode
-                        
-            #datastreamprofileresp = conn.get '/fedora/objects/'+pid+'/datastreams/'+dsid+'?format=xml'
-            #datastreamprofiledoc  = Nokogiri::XML(datastreamprofileresp.body.to_s)
-
-            #dslocation_elts = datastreamprofiledoc.xpath('/dsp:datastreamProfile/dsp:dsLocation', @namespaces)
-            #if not dslocation_elts.nil?
-            #  for dslocation_elt in dslocation_elts
-            #    dslocation = dslocation_elt.text
-            #    filenode = Nokogiri::XML::Node.new('file',record)
-            #    filenode['id'] = dsid
-            #    filenode['mime'] = dsmime
-            #    filenode['url']  = dslocation
-            #    filesnode << filenode
-            #  end
-            #end
           end
         else
           puts "    Cannot find any uploaded file for " + pid
