@@ -136,6 +136,11 @@ class IrisDump
       end
     end
 
+    puts 'Remove temporary files ...'
+    Dir.foreach(@dumppath) do |f|
+      fn = File.join(@dumppath, f)
+      File.delete(fn) if f != '.' && f != '..'
+    end
   end
 end
 
